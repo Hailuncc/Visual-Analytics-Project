@@ -1,0 +1,4 @@
+New Binary Column
+
+Spotify_Available : if a song is available on Spotify (1 for available, 0 for not available)
+
