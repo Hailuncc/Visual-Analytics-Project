@@ -24,75 +24,77 @@
     <datasource caption='Data' inline='true' name='federated.1lnqho811ylboe1flc8j614bny1e' version='18.1'>
       <connection class='federated'>
         <named-connections>
-          <named-connection caption='Data' name='textscan.0gs67cm12m76w61a2ky6h1aae5n3'>
-            <connection class='textscan' directory='C:/Users/ohblu/OneDrive/Desktop/Visualilzation Project/Visual-Analytics-Project' filename='Data.csv' password='' server='' />
+          <named-connection caption='Updared_Data' name='textscan.0heng760ka5vxq19de3171mm8v3u'>
+            <connection class='textscan' directory='C:/Users/ohblu/OneDrive/Desktop/Visualilzation Project/Visual-Analytics-Project' filename='Updared_Data.csv' password='' server='' />
           </named-connection>
         </named-connections>
-        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.0gs67cm12m76w61a2ky6h1aae5n3' name='Data.csv' table='[Data#csv]' type='table'>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='textscan.0heng760ka5vxq19de3171mm8v3u' name='Updared_Data.csv' table='[Updared_Data#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-            <column datatype='string' name='Artist' ordinal='0' />
-            <column datatype='string' name='Url_spotify' ordinal='1' />
-            <column datatype='string' name='Track' ordinal='2' />
-            <column datatype='string' name='Album' ordinal='3' />
-            <column datatype='string' name='Album_type' ordinal='4' />
-            <column datatype='string' name='Uri' ordinal='5' />
-            <column datatype='real' name='Danceability' ordinal='6' />
-            <column datatype='real' name='Energy' ordinal='7' />
-            <column datatype='integer' name='Key' ordinal='8' />
-            <column datatype='real' name='Loudness' ordinal='9' />
-            <column datatype='real' name='Speechiness' ordinal='10' />
-            <column datatype='real' name='Acousticness' ordinal='11' />
-            <column datatype='real' name='Instrumentalness' ordinal='12' />
-            <column datatype='real' name='Liveness' ordinal='13' />
-            <column datatype='real' name='Valence' ordinal='14' />
-            <column datatype='real' name='Tempo' ordinal='15' />
-            <column datatype='integer' name='Duration_ms' ordinal='16' />
-            <column datatype='string' name='Url_youtube' ordinal='17' />
-            <column datatype='string' name='Title' ordinal='18' />
-            <column datatype='string' name='Channel' ordinal='19' />
-            <column datatype='integer' name='Views' ordinal='20' />
-            <column datatype='integer' name='Likes' ordinal='21' />
-            <column datatype='integer' name='Comments' ordinal='22' />
-            <column datatype='string' name='Licensed' ordinal='23' />
-            <column datatype='string' name='official_video' ordinal='24' />
-            <column datatype='integer' name='Stream' ordinal='25' />
+            <column datatype='integer' name='RowID ' ordinal='0' />
+            <column datatype='string' name='Artist' ordinal='1' />
+            <column datatype='string' name='Url_spotify' ordinal='2' />
+            <column datatype='string' name='Track' ordinal='3' />
+            <column datatype='string' name='Album' ordinal='4' />
+            <column datatype='string' name='Album_type' ordinal='5' />
+            <column datatype='string' name='Uri' ordinal='6' />
+            <column datatype='real' name='Danceability' ordinal='7' />
+            <column datatype='real' name='Energy' ordinal='8' />
+            <column datatype='integer' name='Key' ordinal='9' />
+            <column datatype='real' name='Loudness' ordinal='10' />
+            <column datatype='real' name='Speechiness' ordinal='11' />
+            <column datatype='real' name='Acousticness' ordinal='12' />
+            <column datatype='real' name='Instrumentalness' ordinal='13' />
+            <column datatype='real' name='Liveness' ordinal='14' />
+            <column datatype='real' name='Valence' ordinal='15' />
+            <column datatype='real' name='Tempo' ordinal='16' />
+            <column datatype='integer' name='Duration_ms' ordinal='17' />
+            <column datatype='string' name='Url_youtube' ordinal='18' />
+            <column datatype='string' name='Title' ordinal='19' />
+            <column datatype='string' name='Channel' ordinal='20' />
+            <column datatype='integer' name='Views' ordinal='21' />
+            <column datatype='integer' name='Likes' ordinal='22' />
+            <column datatype='integer' name='Comments' ordinal='23' />
+            <column datatype='string' name='Licensed' ordinal='24' />
+            <column datatype='string' name='official_video' ordinal='25' />
+            <column datatype='integer' name='Stream' ordinal='26' />
           </columns>
         </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
-        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.0gs67cm12m76w61a2ky6h1aae5n3' name='Data.csv' table='[Data#csv]' type='table'>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='textscan.0heng760ka5vxq19de3171mm8v3u' name='Updared_Data.csv' table='[Updared_Data#csv]' type='table'>
           <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-            <column datatype='string' name='Artist' ordinal='0' />
-            <column datatype='string' name='Url_spotify' ordinal='1' />
-            <column datatype='string' name='Track' ordinal='2' />
-            <column datatype='string' name='Album' ordinal='3' />
-            <column datatype='string' name='Album_type' ordinal='4' />
-            <column datatype='string' name='Uri' ordinal='5' />
-            <column datatype='real' name='Danceability' ordinal='6' />
-            <column datatype='real' name='Energy' ordinal='7' />
-            <column datatype='integer' name='Key' ordinal='8' />
-            <column datatype='real' name='Loudness' ordinal='9' />
-            <column datatype='real' name='Speechiness' ordinal='10' />
-            <column datatype='real' name='Acousticness' ordinal='11' />
-            <column datatype='real' name='Instrumentalness' ordinal='12' />
-            <column datatype='real' name='Liveness' ordinal='13' />
-            <column datatype='real' name='Valence' ordinal='14' />
-            <column datatype='real' name='Tempo' ordinal='15' />
-            <column datatype='integer' name='Duration_ms' ordinal='16' />
-            <column datatype='string' name='Url_youtube' ordinal='17' />
-            <column datatype='string' name='Title' ordinal='18' />
-            <column datatype='string' name='Channel' ordinal='19' />
-            <column datatype='integer' name='Views' ordinal='20' />
-            <column datatype='integer' name='Likes' ordinal='21' />
-            <column datatype='integer' name='Comments' ordinal='22' />
-            <column datatype='string' name='Licensed' ordinal='23' />
-            <column datatype='string' name='official_video' ordinal='24' />
-            <column datatype='integer' name='Stream' ordinal='25' />
+            <column datatype='integer' name='RowID ' ordinal='0' />
+            <column datatype='string' name='Artist' ordinal='1' />
+            <column datatype='string' name='Url_spotify' ordinal='2' />
+            <column datatype='string' name='Track' ordinal='3' />
+            <column datatype='string' name='Album' ordinal='4' />
+            <column datatype='string' name='Album_type' ordinal='5' />
+            <column datatype='string' name='Uri' ordinal='6' />
+            <column datatype='real' name='Danceability' ordinal='7' />
+            <column datatype='real' name='Energy' ordinal='8' />
+            <column datatype='integer' name='Key' ordinal='9' />
+            <column datatype='real' name='Loudness' ordinal='10' />
+            <column datatype='real' name='Speechiness' ordinal='11' />
+            <column datatype='real' name='Acousticness' ordinal='12' />
+            <column datatype='real' name='Instrumentalness' ordinal='13' />
+            <column datatype='real' name='Liveness' ordinal='14' />
+            <column datatype='real' name='Valence' ordinal='15' />
+            <column datatype='real' name='Tempo' ordinal='16' />
+            <column datatype='integer' name='Duration_ms' ordinal='17' />
+            <column datatype='string' name='Url_youtube' ordinal='18' />
+            <column datatype='string' name='Title' ordinal='19' />
+            <column datatype='string' name='Channel' ordinal='20' />
+            <column datatype='integer' name='Views' ordinal='21' />
+            <column datatype='integer' name='Likes' ordinal='22' />
+            <column datatype='integer' name='Comments' ordinal='23' />
+            <column datatype='string' name='Licensed' ordinal='24' />
+            <column datatype='string' name='official_video' ordinal='25' />
+            <column datatype='integer' name='Stream' ordinal='26' />
           </columns>
         </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
         <metadata-records>
           <metadata-record class='capability'>
             <remote-name />
             <remote-type>0</remote-type>
-            <parent-name>[Data.csv]</parent-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
             <remote-alias />
             <aggregation>Count</aggregation>
             <contains-null>true</contains-null>
@@ -106,26 +108,23 @@
             </attributes>
           </metadata-record>
           <metadata-record class='column'>
+            <remote-name>RowID </remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[RowID ]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>RowID </remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
             <remote-name>Artist</remote-name>
             <remote-type>129</remote-type>
             <local-name>[Artist]</local-name>
-            <parent-name>[Data.csv]</parent-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
             <remote-alias>Artist</remote-alias>
-            <ordinal>0</ordinal>
-            <local-type>string</local-type>
-            <aggregation>Count</aggregation>
-            <scale>1</scale>
-            <width>1073741823</width>
-            <contains-null>true</contains-null>
-            <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Url_spotify</remote-name>
-            <remote-type>129</remote-type>
-            <local-name>[Url_spotify]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Url_spotify</remote-alias>
             <ordinal>1</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -133,14 +132,14 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Track</remote-name>
+            <remote-name>Url_spotify</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Track]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Track</remote-alias>
+            <local-name>[Url_spotify]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Url_spotify</remote-alias>
             <ordinal>2</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -148,14 +147,14 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Album</remote-name>
+            <remote-name>Track</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Album]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Album</remote-alias>
+            <local-name>[Track]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Track</remote-alias>
             <ordinal>3</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -163,14 +162,14 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Album_type</remote-name>
+            <remote-name>Album</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Album_type]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Album_type</remote-alias>
+            <local-name>[Album]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Album</remote-alias>
             <ordinal>4</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -178,14 +177,14 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Uri</remote-name>
+            <remote-name>Album_type</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Uri]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Uri</remote-alias>
+            <local-name>[Album_type]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Album_type</remote-alias>
             <ordinal>5</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -193,161 +192,161 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Danceability</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Danceability]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Danceability</remote-alias>
-            <ordinal>6</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Energy</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Energy]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Energy</remote-alias>
-            <ordinal>7</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Key</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Key]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Key</remote-alias>
-            <ordinal>8</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Loudness</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Loudness]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Loudness</remote-alias>
-            <ordinal>9</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Speechiness</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Speechiness]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Speechiness</remote-alias>
-            <ordinal>10</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Acousticness</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Acousticness]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Acousticness</remote-alias>
-            <ordinal>11</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Instrumentalness</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Instrumentalness]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Instrumentalness</remote-alias>
-            <ordinal>12</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Liveness</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Liveness]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Liveness</remote-alias>
-            <ordinal>13</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Valence</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Valence]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Valence</remote-alias>
-            <ordinal>14</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Tempo</remote-name>
-            <remote-type>5</remote-type>
-            <local-name>[Tempo]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Tempo</remote-alias>
-            <ordinal>15</ordinal>
-            <local-type>real</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Duration_ms</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Duration_ms]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Duration_ms</remote-alias>
-            <ordinal>16</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Url_youtube</remote-name>
+            <remote-name>Uri</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Url_youtube]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Url_youtube</remote-alias>
-            <ordinal>17</ordinal>
+            <local-name>[Uri]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Uri</remote-alias>
+            <ordinal>6</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Title</remote-name>
+            <remote-name>Danceability</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Danceability]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Danceability</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Energy</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Energy]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Energy</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Key</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Key]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Key</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Loudness</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Loudness]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Loudness</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Speechiness</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Speechiness]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Speechiness</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Acousticness</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Acousticness]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Acousticness</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Instrumentalness</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Instrumentalness]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Instrumentalness</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Liveness</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Liveness]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Liveness</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Valence</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Valence]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Valence</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Tempo</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Tempo]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Tempo</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Duration_ms</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Duration_ms]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Duration_ms</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Url_youtube</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Title]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Title</remote-alias>
+            <local-name>[Url_youtube]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Url_youtube</remote-alias>
             <ordinal>18</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -355,14 +354,14 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Channel</remote-name>
+            <remote-name>Title</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Channel]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Channel</remote-alias>
+            <local-name>[Title]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Title</remote-alias>
             <ordinal>19</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -370,65 +369,65 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>Views</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Views]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Views</remote-alias>
-            <ordinal>20</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Likes</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Likes]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Likes</remote-alias>
-            <ordinal>21</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Comments</remote-name>
-            <remote-type>20</remote-type>
-            <local-name>[Comments]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Comments</remote-alias>
-            <ordinal>22</ordinal>
-            <local-type>integer</local-type>
-            <aggregation>Sum</aggregation>
-            <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
-          </metadata-record>
-          <metadata-record class='column'>
-            <remote-name>Licensed</remote-name>
+            <remote-name>Channel</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[Licensed]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>Licensed</remote-alias>
-            <ordinal>23</ordinal>
+            <local-name>[Channel]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Channel</remote-alias>
+            <ordinal>20</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
             <scale>1</scale>
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
-            <remote-name>official_video</remote-name>
+            <remote-name>Views</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Views]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Views</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Likes</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Likes]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Likes</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Comments</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Comments]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Comments</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Licensed</remote-name>
             <remote-type>129</remote-type>
-            <local-name>[official_video]</local-name>
-            <parent-name>[Data.csv]</parent-name>
-            <remote-alias>official_video</remote-alias>
+            <local-name>[Licensed]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>Licensed</remote-alias>
             <ordinal>24</ordinal>
             <local-type>string</local-type>
             <aggregation>Count</aggregation>
@@ -436,19 +435,34 @@
             <width>1073741823</width>
             <contains-null>true</contains-null>
             <collation flag='0' name='LEN_RUS' />
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>official_video</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[official_video]</local-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
+            <remote-alias>official_video</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
           <metadata-record class='column'>
             <remote-name>Stream</remote-name>
             <remote-type>20</remote-type>
             <local-name>[Stream]</local-name>
-            <parent-name>[Data.csv]</parent-name>
+            <parent-name>[Updared_Data.csv]</parent-name>
             <remote-alias>Stream</remote-alias>
-            <ordinal>25</ordinal>
+            <ordinal>26</ordinal>
             <local-type>integer</local-type>
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
-            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
           </metadata-record>
         </metadata-records>
       </connection>
@@ -456,9 +470,10 @@
       <column caption='Album type' datatype='string' name='[Album_type]' role='dimension' type='nominal' />
       <column caption='Duration ms' datatype='integer' name='[Duration_ms]' role='measure' type='quantitative' />
       <column datatype='integer' name='[Key]' role='dimension' type='ordinal' />
+      <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
       <column caption='Url spotify' datatype='string' name='[Url_spotify]' role='dimension' type='nominal' />
       <column caption='Url youtube' datatype='string' name='[Url_youtube]' role='dimension' type='nominal' />
-      <_.fcp.ObjectModelTableType.true...column caption='Data.csv' datatype='table' name='[__tableau_internal_object_id__].[Data.csv_DA8E62C856F549C0B424E6FC78CD971E]' role='measure' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Updared_Data.csv' datatype='table' name='[__tableau_internal_object_id__].[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]' role='measure' type='quantitative' />
       <column caption='Official Video' datatype='string' name='[official_video]' role='dimension' type='nominal' />
       <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
       <semantic-values>
@@ -466,36 +481,37 @@
       </semantic-values>
       <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
         <objects>
-          <object caption='Data.csv' id='Data.csv_DA8E62C856F549C0B424E6FC78CD971E'>
+          <object caption='Updared_Data.csv' id='Updared_Data.csv_E7DE05619473498E97C79578AF5C051A'>
             <properties context=''>
-              <relation connection='textscan.0gs67cm12m76w61a2ky6h1aae5n3' name='Data.csv' table='[Data#csv]' type='table'>
+              <relation connection='textscan.0heng760ka5vxq19de3171mm8v3u' name='Updared_Data.csv' table='[Updared_Data#csv]' type='table'>
                 <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-                  <column datatype='string' name='Artist' ordinal='0' />
-                  <column datatype='string' name='Url_spotify' ordinal='1' />
-                  <column datatype='string' name='Track' ordinal='2' />
-                  <column datatype='string' name='Album' ordinal='3' />
-                  <column datatype='string' name='Album_type' ordinal='4' />
-                  <column datatype='string' name='Uri' ordinal='5' />
-                  <column datatype='real' name='Danceability' ordinal='6' />
-                  <column datatype='real' name='Energy' ordinal='7' />
-                  <column datatype='integer' name='Key' ordinal='8' />
-                  <column datatype='real' name='Loudness' ordinal='9' />
-                  <column datatype='real' name='Speechiness' ordinal='10' />
-                  <column datatype='real' name='Acousticness' ordinal='11' />
-                  <column datatype='real' name='Instrumentalness' ordinal='12' />
-                  <column datatype='real' name='Liveness' ordinal='13' />
-                  <column datatype='real' name='Valence' ordinal='14' />
-                  <column datatype='real' name='Tempo' ordinal='15' />
-                  <column datatype='integer' name='Duration_ms' ordinal='16' />
-                  <column datatype='string' name='Url_youtube' ordinal='17' />
-                  <column datatype='string' name='Title' ordinal='18' />
-                  <column datatype='string' name='Channel' ordinal='19' />
-                  <column datatype='integer' name='Views' ordinal='20' />
-                  <column datatype='integer' name='Likes' ordinal='21' />
-                  <column datatype='integer' name='Comments' ordinal='22' />
-                  <column datatype='string' name='Licensed' ordinal='23' />
-                  <column datatype='string' name='official_video' ordinal='24' />
-                  <column datatype='integer' name='Stream' ordinal='25' />
+                  <column datatype='integer' name='RowID ' ordinal='0' />
+                  <column datatype='string' name='Artist' ordinal='1' />
+                  <column datatype='string' name='Url_spotify' ordinal='2' />
+                  <column datatype='string' name='Track' ordinal='3' />
+                  <column datatype='string' name='Album' ordinal='4' />
+                  <column datatype='string' name='Album_type' ordinal='5' />
+                  <column datatype='string' name='Uri' ordinal='6' />
+                  <column datatype='real' name='Danceability' ordinal='7' />
+                  <column datatype='real' name='Energy' ordinal='8' />
+                  <column datatype='integer' name='Key' ordinal='9' />
+                  <column datatype='real' name='Loudness' ordinal='10' />
+                  <column datatype='real' name='Speechiness' ordinal='11' />
+                  <column datatype='real' name='Acousticness' ordinal='12' />
+                  <column datatype='real' name='Instrumentalness' ordinal='13' />
+                  <column datatype='real' name='Liveness' ordinal='14' />
+                  <column datatype='real' name='Valence' ordinal='15' />
+                  <column datatype='real' name='Tempo' ordinal='16' />
+                  <column datatype='integer' name='Duration_ms' ordinal='17' />
+                  <column datatype='string' name='Url_youtube' ordinal='18' />
+                  <column datatype='string' name='Title' ordinal='19' />
+                  <column datatype='string' name='Channel' ordinal='20' />
+                  <column datatype='integer' name='Views' ordinal='21' />
+                  <column datatype='integer' name='Likes' ordinal='22' />
+                  <column datatype='integer' name='Comments' ordinal='23' />
+                  <column datatype='string' name='Licensed' ordinal='24' />
+                  <column datatype='string' name='official_video' ordinal='25' />
+                  <column datatype='integer' name='Stream' ordinal='26' />
                 </columns>
               </relation>
             </properties>
