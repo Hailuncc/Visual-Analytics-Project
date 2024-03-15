@@ -6,8 +6,6 @@
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
-    <IntuitiveSorting />
-    <IntuitiveSorting_SP2 />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
@@ -16,6 +14,7 @@
     <SheetIdentifierTracking />
     <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
+    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -497,6 +496,7 @@
       <_.fcp.ObjectModelTableType.true...column caption='Updared_Data.csv' datatype='table' name='[__tableau_internal_object_id__].[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]' role='measure' type='quantitative' />
       <column caption='Official Video' datatype='string' name='[official_video]' role='dimension' type='nominal' />
       <column-instance column='[__tableau_internal_object_id__].[Updared_Data.csv_E7DE05619473498E97C79578AF5C051A]' derivation='Count' name='[__tableau_internal_object_id__].[cnt:Updared_Data.csv_E7DE05619473498E97C79578AF5C051A:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Loudness]' derivation='Avg' name='[avg:Loudness:qk]' pivot='key' type='quantitative' />
       <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
       <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
       <column-instance column='[Track]' derivation='None' name='[none:Track:nk]' pivot='key' type='nominal' />
@@ -517,6 +517,13 @@
       <group caption='Action (Artist)' hidden='true' name='[Action (Artist)]' name-style='unqualified' user:auto-column='sheet_link'>
         <groupfilter function='crossjoin'>
           <groupfilter function='level-members' level='[Artist]' />
+        </groupfilter>
+      </group>
+      <group caption='Action (Artist,RowID,Track)' hidden='true' name='[Action (Artist,RowID,Track)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[Artist]' />
+          <groupfilter function='level-members' level='[RowID ]' />
+          <groupfilter function='level-members' level='[Track]' />
         </groupfilter>
       </group>
       <group caption='Action (Track)' hidden='true' name='[Action (Track)]' name-style='unqualified' user:auto-column='sheet_link'>
@@ -30531,22 +30538,16 @@
           </encoding>
           <encoding attr='color' field='[none:Track:nk]' type='palette'>
             <map to='#499894'>
+              <bucket>&quot;After LIKE - Holiday Remix&quot;</bucket>
+            </map>
+            <map to='#499894'>
               <bucket>&quot;All Girls Are The Same&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Callaita&quot;</bucket>
+              <bucket>&quot;Breathe (feat. RZA) [Liam H and Rene LaVice Re-Amp]&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Can&apos;t Hold Us (feat. Ray Dalton)&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Dani California&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Dark Necessities&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;De Do Do Do, De Da Da Da&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Decrescendo&quot;</bucket>
@@ -30555,7 +30556,7 @@
               <bucket>&quot;Deeper Than the Holler&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Deja&quot;</bucket>
+              <bucket>&quot;Descarregado - Ao Vivo&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Desconocidos&quot;</bucket>
@@ -30657,9 +30658,6 @@
               <bucket>&quot;Everything She Wants&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Falso&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;Fantasi&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -30706,9 +30704,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;From Liquid&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Frou-frou Foxes in Midsummer Fires&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Fuera de mí&quot;</bucket>
@@ -30846,9 +30841,6 @@
               <bucket>&quot;I Have Nothing&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;I Know What You Did Last Summer&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;i love you&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -30868,9 +30860,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;I&apos;d Lie For You (And That&apos;s The Truth)&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;I&apos;m Like A Bird&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;I’m Here - Short Edit&quot;</bucket>
@@ -30981,9 +30970,6 @@
               <bucket>&quot;La Murga&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;La Quête&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;La vie en rose - Single Version&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -31033,9 +31019,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Like You Do&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Linea Telefonica - En Vivo&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Lithium&quot;</bucket>
@@ -31125,9 +31108,6 @@
               <bucket>&quot;ME VOY | E9&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Meet Me At Our Spot&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;Melawan Hati&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -31174,9 +31154,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Morning Is Coming (with Shaggy)&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Mountain Music&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Moving to New York&quot;</bucket>
@@ -31252,9 +31229,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Not Tonight (feat. Da Brat, Left Eye, Missy \&quot;Misdemeanor\&quot; Elliott and Angie Martinez) - Remix&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;NUESTRO MUNDO&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;NUOVO RANGE (con SFERA EBBASTA)&quot;</bucket>
@@ -31410,6 +31384,9 @@
               <bucket>&quot;Que Lo Nuestro Se Quede Nuestro&quot;</bucket>
             </map>
             <map to='#499894'>
+              <bucket>&quot;Que Manera De Quererte&quot;</bucket>
+            </map>
+            <map to='#499894'>
               <bucket>&quot;Que No, Que No&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -31444,9 +31421,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Relicário - Ao Vivo&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Requiem in D Minor, K. 626: 3. Sequentia: Rex tremendae - Live&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Rhiannon&quot;</bucket>
@@ -31492,9 +31466,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Sapna Jahan (From \&quot;Brothers\&quot;)&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Saudade Atemporal - Ao Vivo&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Saving All My Love for You&quot;</bucket>
@@ -31899,9 +31870,6 @@
               <bucket>&quot;Walk Em Down (feat. Roddy Ricch)&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Waltz&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;War Ensemble&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -31972,9 +31940,6 @@
             </map>
             <map to='#499894'>
               <bucket>&quot;Work Out&quot;</bucket>
-            </map>
-            <map to='#499894'>
-              <bucket>&quot;Worst Day&quot;</bucket>
             </map>
             <map to='#499894'>
               <bucket>&quot;Writer In The Dark&quot;</bucket>
@@ -32049,7 +32014,16 @@
               <bucket>&quot;1-800-273-8255&quot;</bucket>
             </map>
             <map to='#4e79a7'>
+              <bucket>&quot;3, 2, 1&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
               <bucket>&quot;7 rings&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Bir Derdim Var&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Coração Gelado 2&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Dar es dar&quot;</bucket>
@@ -32101,9 +32075,6 @@
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Don&apos;t Think Twice, It&apos;s All Right&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;Donde Estará Mi Primavera&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Dormi Na Praça - Ao Vivo&quot;</bucket>
@@ -32256,9 +32227,6 @@
               <bucket>&quot;Good as Hell (feat. Ariana Grande)&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;Good Vibrations - Remastered 2001&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;GOSHA&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -32335,9 +32303,6 @@
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Hush&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;Hysteria&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;I Can Hear Your Heartbeat&quot;</bucket>
@@ -32517,9 +32482,6 @@
               <bucket>&quot;Llegaste Tú&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;Lo Que Construimos&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;Lobo Domesticado&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -32598,9 +32560,6 @@
               <bucket>&quot;Me Ama Me Odia&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;Me Enamoré&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;Me Hace Falta (Cap. 2)&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -32641,9 +32600,6 @@
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Miss My Dawgs (with Lil Wayne)&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;MODO TURBO&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Monkey Gone to Heaven&quot;</bucket>
@@ -32850,6 +32806,9 @@
               <bucket>&quot;Pirai Thedum&quot;</bucket>
             </map>
             <map to='#4e79a7'>
+              <bucket>&quot;Piya Jahu Jan Kalkatiya&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
               <bucket>&quot;Po Nee Po - The Pain of Love&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -32931,9 +32890,6 @@
               <bucket>&quot;Red Barchetta&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;Reeperbahn&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;Remember This&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -32953,9 +32909,6 @@
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Rock and Roll - Remaster&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
-              <bucket>&quot;Rock You Like A Hurricane&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Rojitas las orejas&quot;</bucket>
@@ -33342,9 +33295,6 @@
               <bucket>&quot;Una Noche Más&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;Unconditionally&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;Unskinny Bop&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -33522,16 +33472,19 @@
               <bucket>&quot;ノーダウト&quot;</bucket>
             </map>
             <map to='#4e79a7'>
-              <bucket>&quot;怪物&quot;</bucket>
-            </map>
-            <map to='#4e79a7'>
               <bucket>&quot;淘汰&quot;</bucket>
             </map>
             <map to='#59a14f'>
               <bucket>&quot;2002&quot;</bucket>
             </map>
             <map to='#59a14f'>
+              <bucket>&quot;Aankh Marey (From \&quot;Simmba\&quot;)&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
               <bucket>&quot;Believer&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Born Free&quot;</bucket>
             </map>
             <map to='#59a14f'>
               <bucket>&quot;De Qué Manera Te Olvido&quot;</bucket>
@@ -33643,6 +33596,9 @@
             </map>
             <map to='#59a14f'>
               <bucket>&quot;Experience&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Exscape&quot;</bucket>
             </map>
             <map to='#59a14f'>
               <bucket>&quot;Fading Like A Flower (Every Time You Leave)&quot;</bucket>
@@ -33955,9 +33911,6 @@
             </map>
             <map to='#59a14f'>
               <bucket>&quot;KEKE&quot;</bucket>
-            </map>
-            <map to='#59a14f'>
-              <bucket>&quot;Khairiyat&quot;</bucket>
             </map>
             <map to='#59a14f'>
               <bucket>&quot;Kids - The Chainsmokers Remix&quot;</bucket>
@@ -34830,6 +34783,9 @@
               <bucket>&quot;Tinta y Tiempo&quot;</bucket>
             </map>
             <map to='#59a14f'>
+              <bucket>&quot;Tip Tip (From \&quot;Sooryavanshi\&quot;)&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
               <bucket>&quot;To Brazil!&quot;</bucket>
             </map>
             <map to='#59a14f'>
@@ -35103,7 +35059,13 @@
               <bucket>&quot;青と夏&quot;</bucket>
             </map>
             <map to='#79706e'>
+              <bucket>&quot;Alcohol-Free&quot;</bucket>
+            </map>
+            <map to='#79706e'>
               <bucket>&quot;Another One Bites The Dust - Remastered 2011&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Cartagena&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;changes&quot;</bucket>
@@ -35152,9 +35114,6 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Don&apos;t You Worry Child - Radio Edit&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Doo Wop (That Thing)&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Down A** B**ch&quot;</bucket>
@@ -35299,6 +35258,9 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Gangsta Gangsta&quot;</bucket>
+            </map>
+            <map to='#79706e'>
+              <bucket>&quot;Gee&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Geto Highlites&quot;</bucket>
@@ -35467,9 +35429,6 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Iktara&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Ilzaam (From the Album &apos;Industry&apos;)&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Impala&quot;</bucket>
@@ -36021,6 +35980,9 @@
               <bucket>&quot;Reach Out I&apos;ll Be There&quot;</bucket>
             </map>
             <map to='#79706e'>
+              <bucket>&quot;Ready To Fly - Sub Focus &amp; Dimension&quot;</bucket>
+            </map>
+            <map to='#79706e'>
               <bucket>&quot;Recordando Al Compa Chalino&quot;</bucket>
             </map>
             <map to='#79706e'>
@@ -36118,9 +36080,6 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Shake It Up - 2017 Remaster&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Sher Aaya Sher&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Shooting Stars - triple j Like A Version&quot;</bucket>
@@ -36226,9 +36185,6 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Sun Models (feat. Madelyn Grant)&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Sunrise&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Supernatural Thing, Pt. 1&quot;</bucket>
@@ -36363,9 +36319,6 @@
               <bucket>&quot;Thunderstruck&quot;</bucket>
             </map>
             <map to='#79706e'>
-              <bucket>&quot;Tilidin&quot;</bucket>
-            </map>
-            <map to='#79706e'>
               <bucket>&quot;Time of Dying&quot;</bucket>
             </map>
             <map to='#79706e'>
@@ -36379,9 +36332,6 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;Together&quot;</bucket>
-            </map>
-            <map to='#79706e'>
-              <bucket>&quot;Tomorrow 2 (with Cardi B)&quot;</bucket>
             </map>
             <map to='#79706e'>
               <bucket>&quot;Too Much&quot;</bucket>
@@ -36558,9 +36508,6 @@
               <bucket>&quot;Ya Acabo&quot;</bucket>
             </map>
             <map to='#79706e'>
-              <bucket>&quot;Ya No Te Amo&quot;</bucket>
-            </map>
-            <map to='#79706e'>
               <bucket>&quot;Yes Sir&quot;</bucket>
             </map>
             <map to='#79706e'>
@@ -36615,7 +36562,13 @@
               <bucket>&quot;突然好想你&quot;</bucket>
             </map>
             <map to='#86bcb6'>
+              <bucket>&quot;Ai Eu Chorei - Ao Vivo&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
               <bucket>&quot;All I Want for Christmas Is You&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Bu Böyle&quot;</bucket>
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;Circles&quot;</bucket>
@@ -36772,6 +36725,9 @@
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;Fat Lip&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Feel Special&quot;</bucket>
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;Fields Of Gold&quot;</bucket>
@@ -36952,9 +36908,6 @@
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;I Wish It Would Rain&quot;</bucket>
-            </map>
-            <map to='#86bcb6'>
-              <bucket>&quot;i&apos;ll die anyway.&quot;</bucket>
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;I&apos;m Cheatin&apos;&quot;</bucket>
@@ -37264,6 +37217,9 @@
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;Nainowale Ne&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;Namora Aí&quot;</bucket>
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;Não Sei o Que Lá&quot;</bucket>
@@ -37800,9 +37756,6 @@
               <bucket>&quot;Tears In My Amiri&apos;s&quot;</bucket>
             </map>
             <map to='#86bcb6'>
-              <bucket>&quot;Teil 12 - Fall 53: Die sieben Zinnsoldaten&quot;</bucket>
-            </map>
-            <map to='#86bcb6'>
               <bucket>&quot;Tell Me When to Go (feat. Keak da Sneak)&quot;</bucket>
             </map>
             <map to='#86bcb6'>
@@ -38166,7 +38119,13 @@
               <bucket>&quot;A Thousand Years&quot;</bucket>
             </map>
             <map to='#8cd17d'>
+              <bucket>&quot;Active&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
               <bucket>&quot;Better Now&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;BORRACHA&quot;</bucket>
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;Dangerous&quot;</bucket>
@@ -38179,6 +38138,9 @@
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;De Qué Me Sirve la Vida&quot;</bucket>
+            </map>
+            <map to='#8cd17d'>
+              <bucket>&quot;Debaixo do Cobertor&quot;</bucket>
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;Deep Inside of You - 2008 Remaster&quot;</bucket>
@@ -38487,9 +38449,6 @@
               <bucket>&quot;human&quot;</bucket>
             </map>
             <map to='#8cd17d'>
-              <bucket>&quot;Hunting High and Low&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
               <bucket>&quot;Huwag Kang Matakot&quot;</bucket>
             </map>
             <map to='#8cd17d'>
@@ -38559,13 +38518,7 @@
               <bucket>&quot;Jazz (We&apos;ve Got)&quot;</bucket>
             </map>
             <map to='#8cd17d'>
-              <bucket>&quot;Jerk&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
               <bucket>&quot;Jigsaw&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
-              <bucket>&quot;Johnny, I Hardly Knew Ya&quot;</bucket>
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;Juegos de Amor&quot;</bucket>
@@ -38721,9 +38674,6 @@
               <bucket>&quot;Love Moved First&quot;</bucket>
             </map>
             <map to='#8cd17d'>
-              <bucket>&quot;Love You More&quot;</bucket>
-            </map>
-            <map to='#8cd17d'>
               <bucket>&quot;Lust For Life&quot;</bucket>
             </map>
             <map to='#8cd17d'>
@@ -38829,10 +38779,10 @@
               <bucket>&quot;Munchies for Your Love&quot;</bucket>
             </map>
             <map to='#8cd17d'>
-              <bucket>&quot;Música Romántica&quot;</bucket>
+              <bucket>&quot;Murder In My Mind - Slowed + Reverb&quot;</bucket>
             </map>
             <map to='#8cd17d'>
-              <bucket>&quot;My Boo&quot;</bucket>
+              <bucket>&quot;Música Romántica&quot;</bucket>
             </map>
             <map to='#8cd17d'>
               <bucket>&quot;My Girl&quot;</bucket>
@@ -39681,10 +39631,13 @@
               <bucket>&quot;飛雲之下&quot;</bucket>
             </map>
             <map to='#9d7660'>
+              <bucket>&quot;Bailando - Official Salsa Version&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
               <bucket>&quot;Be Alright&quot;</bucket>
             </map>
             <map to='#9d7660'>
-              <bucket>&quot;Dancing With Your Ghost&quot;</bucket>
+              <bucket>&quot;Come a Little Closer&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Danza Kuduro - Remix&quot;</bucket>
@@ -39709,9 +39662,6 @@
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Do I Make You Wanna&quot;</bucket>
-            </map>
-            <map to='#9d7660'>
-              <bucket>&quot;Do You Mind&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Dom de Sonhar / Encaixe Perfeito / Só Me Dá Prazer&quot;</bucket>
@@ -40066,6 +40016,9 @@
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Just the Two of Us&quot;</bucket>
+            </map>
+            <map to='#9d7660'>
+              <bucket>&quot;Kakari Bhayil Ba Kamariya Lapak Ke 2&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Kalank (Duet)&quot;</bucket>
@@ -40467,10 +40420,10 @@
               <bucket>&quot;Paint It, Black&quot;</bucket>
             </map>
             <map to='#9d7660'>
-              <bucket>&quot;Pamit&quot;</bucket>
+              <bucket>&quot;Papa fait le pitre&quot;</bucket>
             </map>
             <map to='#9d7660'>
-              <bucket>&quot;Papa fait le pitre&quot;</bucket>
+              <bucket>&quot;Parada Louca&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Paradise&quot;</bucket>
@@ -40588,9 +40541,6 @@
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Ready To Fly - Hardcore Mix&quot;</bucket>
-            </map>
-            <map to='#9d7660'>
-              <bucket>&quot;Rebel Yell&quot;</bucket>
             </map>
             <map to='#9d7660'>
               <bucket>&quot;Reelin&apos; In The Years&quot;</bucket>
@@ -40962,9 +40912,6 @@
               <bucket>&quot;Todo Empezo&quot;</bucket>
             </map>
             <map to='#9d7660'>
-              <bucket>&quot;Tonight&quot;</bucket>
-            </map>
-            <map to='#9d7660'>
               <bucket>&quot;Too Young&quot;</bucket>
             </map>
             <map to='#9d7660'>
@@ -41217,10 +41164,19 @@
               <bucket>&quot;記念撮影&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
+              <bucket>&quot;8 Days of Christmas&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
               <bucket>&quot;All of Me&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;Before You Go&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Birthday&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
+              <bucket>&quot;Cruel Summer&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;Dancin - Laidback Luke Remix&quot;</bucket>
@@ -41340,9 +41296,6 @@
               <bucket>&quot;Faded&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
-              <bucket>&quot;Fake ID (Coke &amp; Rum Remix)&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
               <bucket>&quot;Fanática Sensual&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
@@ -41452,9 +41405,6 @@
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;Happy Pum Pum&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
-              <bucket>&quot;Hark! The Herald Angels Sing&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;Have It All&quot;</bucket>
@@ -41778,9 +41728,6 @@
               <bucket>&quot;Maybe&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
-              <bucket>&quot;Me and Bobby McGee&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
               <bucket>&quot;Me Hace Tanto Bien&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
@@ -41932,9 +41879,6 @@
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;North Memphis&quot;</bucket>
-            </map>
-            <map to='#a0cbe8'>
-              <bucket>&quot;Not Gonna Die&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
               <bucket>&quot;Nothing Else Matters vs F*CKING SOCIETY - Hardwell Mashup&quot;</bucket>
@@ -42420,6 +42364,9 @@
               <bucket>&quot;The Clincher&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
+              <bucket>&quot;The Difference&quot;</bucket>
+            </map>
+            <map to='#a0cbe8'>
               <bucket>&quot;The Fight Song&quot;</bucket>
             </map>
             <map to='#a0cbe8'>
@@ -42735,7 +42682,13 @@
               <bucket>&quot;踊り子&quot;</bucket>
             </map>
             <map to='#b07aa1'>
+              <bucket>&quot;Back To The Crib&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
               <bucket>&quot;Call Out My Name&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;City High&quot;</bucket>
             </map>
             <map to='#b07aa1'>
               <bucket>&quot;Dancing Queen&quot;</bucket>
@@ -43086,6 +43039,9 @@
               <bucket>&quot;Insomnia&quot;</bucket>
             </map>
             <map to='#b07aa1'>
+              <bucket>&quot;Into the New World&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
               <bucket>&quot;irreplaceable&quot;</bucket>
             </map>
             <map to='#b07aa1'>
@@ -43279,9 +43235,6 @@
             </map>
             <map to='#b07aa1'>
               <bucket>&quot;Maahi Ve&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
-              <bucket>&quot;Made in America&quot;</bucket>
             </map>
             <map to='#b07aa1'>
               <bucket>&quot;Main Title \&quot;Somewhere in My Memory\&quot; (From \&quot;Home Alone\&quot;) - Voice&quot;</bucket>
@@ -43722,9 +43675,6 @@
               <bucket>&quot;Sex on the Beach&quot;</bucket>
             </map>
             <map to='#b07aa1'>
-              <bucket>&quot;Shake the Frost (Live)&quot;</bucket>
-            </map>
-            <map to='#b07aa1'>
               <bucket>&quot;Shape of You&quot;</bucket>
             </map>
             <map to='#b07aa1'>
@@ -43771,6 +43721,9 @@
             </map>
             <map to='#b07aa1'>
               <bucket>&quot;Sofia&quot;</bucket>
+            </map>
+            <map to='#b07aa1'>
+              <bucket>&quot;Soft&quot;</bucket>
             </map>
             <map to='#b07aa1'>
               <bucket>&quot;Soldier On&quot;</bucket>
@@ -44196,10 +44149,16 @@
               <bucket>&quot;蒲公英的約定&quot;</bucket>
             </map>
             <map to='#b6992d'>
+              <bucket>&quot;Adiós Amor&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
               <bucket>&quot;Adore You&quot;</bucket>
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Blinding Lights&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;Bounce (feat. Kelis) - Radio Edit&quot;</bucket>
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Dangerous (feat. Jeremih and PnB Rock)&quot;</bucket>
@@ -44215,6 +44174,9 @@
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Deixa Tudo Como Tá - Ao Vivo&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
+              <bucket>&quot;DEJAU&apos;&quot;</bucket>
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Déjenme Llorar&quot;</bucket>
@@ -44838,6 +44800,9 @@
               <bucket>&quot;Munda Sona Hoon Main (From \&quot;Shehzada\&quot;)&quot;</bucket>
             </map>
             <map to='#b6992d'>
+              <bucket>&quot;Murder In My Mind - Sped Up&quot;</bucket>
+            </map>
+            <map to='#b6992d'>
               <bucket>&quot;My Chick Bad&quot;</bucket>
             </map>
             <map to='#b6992d'>
@@ -45297,9 +45262,6 @@
               <bucket>&quot;Sticker&quot;</bucket>
             </map>
             <map to='#b6992d'>
-              <bucket>&quot;Still of the Night - 2018 Remaster&quot;</bucket>
-            </map>
-            <map to='#b6992d'>
               <bucket>&quot;Stranded&quot;</bucket>
             </map>
             <map to='#b6992d'>
@@ -45490,9 +45452,6 @@
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Underneath the Tree&quot;</bucket>
-            </map>
-            <map to='#b6992d'>
-              <bucket>&quot;Universo Paralelo&quot;</bucket>
             </map>
             <map to='#b6992d'>
               <bucket>&quot;Until I Found You&quot;</bucket>
@@ -45693,7 +45652,13 @@
               <bucket>&quot;高嶺の花子さん&quot;</bucket>
             </map>
             <map to='#bab0ac'>
+              <bucket>&quot;American Idiot&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
               <bucket>&quot;Billie Jean&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Cásate Conmigo&quot;</bucket>
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Cheap Thrills&quot;</bucket>
@@ -45834,9 +45799,6 @@
               <bucket>&quot;Family Affair&quot;</bucket>
             </map>
             <map to='#bab0ac'>
-              <bucket>&quot;Father And Son&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
               <bucket>&quot;Ferrari - Acoustic&quot;</bucket>
             </map>
             <map to='#bab0ac'>
@@ -45864,9 +45826,6 @@
               <bucket>&quot;Fruta Prohibida&quot;</bucket>
             </map>
             <map to='#bab0ac'>
-              <bucket>&quot;Fugaz (feat. Rubén Albarrán) - En Vivo&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
               <bucket>&quot;Fusil&quot;</bucket>
             </map>
             <map to='#bab0ac'>
@@ -45874,9 +45833,6 @@
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Gassed Up&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;Gët Busy&quot;</bucket>
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Gettin&apos; It (feat. Parliament Funkadelic)&quot;</bucket>
@@ -45901,6 +45857,9 @@
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;God Only Knows - Mono / 1997 Remastered&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
+              <bucket>&quot;Godanwa&quot;</bucket>
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Going, Going, Gone&quot;</bucket>
@@ -46617,6 +46576,9 @@
               <bucket>&quot;Réseaux&quot;</bucket>
             </map>
             <map to='#bab0ac'>
+              <bucket>&quot;Respeita Seu Ex&quot;</bucket>
+            </map>
+            <map to='#bab0ac'>
               <bucket>&quot;Ride With Me (feat. Kid Ink)&quot;</bucket>
             </map>
             <map to='#bab0ac'>
@@ -46660,9 +46622,6 @@
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Santa Claus Is Comin&apos; to Town - Live at C.W. Post College, Greenvale, NY - December 1975&quot;</bucket>
-            </map>
-            <map to='#bab0ac'>
-              <bucket>&quot;Satellite&quot;</bucket>
             </map>
             <map to='#bab0ac'>
               <bucket>&quot;Savage (feat. Flux Pavilion &amp; MAX)&quot;</bucket>
@@ -47214,7 +47173,13 @@
               <bucket>&quot;晴天&quot;</bucket>
             </map>
             <map to='#d37295'>
+              <bucket>&quot;Answer&quot;</bucket>
+            </map>
+            <map to='#d37295'>
               <bucket>&quot;Attention&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Celestial&quot;</bucket>
             </map>
             <map to='#d37295'>
               <bucket>&quot;Cheerleader - Felix Jaehn Remix Radio Edit&quot;</bucket>
@@ -47424,6 +47389,9 @@
               <bucket>&quot;Goodnigth Menina&quot;</bucket>
             </map>
             <map to='#d37295'>
+              <bucket>&quot;Gostosinha é Ela&quot;</bucket>
+            </map>
+            <map to='#d37295'>
               <bucket>&quot;Got What I Got&quot;</bucket>
             </map>
             <map to='#d37295'>
@@ -47467,9 +47435,6 @@
             </map>
             <map to='#d37295'>
               <bucket>&quot;Here&quot;</bucket>
-            </map>
-            <map to='#d37295'>
-              <bucket>&quot;Here Tonight&quot;</bucket>
             </map>
             <map to='#d37295'>
               <bucket>&quot;Highway Star&quot;</bucket>
@@ -47644,9 +47609,6 @@
             </map>
             <map to='#d37295'>
               <bucket>&quot;La Chica de Humo&quot;</bucket>
-            </map>
-            <map to='#d37295'>
-              <bucket>&quot;La Curiosidad (feat. Myke Towers) - Mixed&quot;</bucket>
             </map>
             <map to='#d37295'>
               <bucket>&quot;La kiffance&quot;</bucket>
@@ -47944,6 +47906,9 @@
             </map>
             <map to='#d37295'>
               <bucket>&quot;Oceans (Where Feet May Fail) - Radio Version&quot;</bucket>
+            </map>
+            <map to='#d37295'>
+              <bucket>&quot;Odo&quot;</bucket>
             </map>
             <map to='#d37295'>
               <bucket>&quot;Official Girl (feat. Lil&apos; Wayne)&quot;</bucket>
@@ -48723,7 +48688,13 @@
               <bucket>&quot;花占い&quot;</bucket>
             </map>
             <map to='#d4a6c8'>
+              <bucket>&quot;Backstabber&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
               <bucket>&quot;Bad Habits&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Coka 2.0 (From \&quot;Liger (Telugu)\&quot;)&quot;</bucket>
             </map>
             <map to='#d4a6c8'>
               <bucket>&quot;Cold Heart - PNAU Remix&quot;</bucket>
@@ -49087,6 +49058,9 @@
             </map>
             <map to='#d4a6c8'>
               <bucket>&quot;Just Can&apos;t Get Enough - 2006 Remaster&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
+              <bucket>&quot;Kaadhal kaditham (From \&quot;Jodi\&quot;)&quot;</bucket>
             </map>
             <map to='#d4a6c8'>
               <bucket>&quot;Kalalo Kooda&quot;</bucket>
@@ -49809,6 +49783,9 @@
               <bucket>&quot;Swervin (feat. 6ix9ine)&quot;</bucket>
             </map>
             <map to='#d4a6c8'>
+              <bucket>&quot;Switchez&quot;</bucket>
+            </map>
+            <map to='#d4a6c8'>
               <bucket>&quot;Symphony No. 5 In C Sharp Minor: IV. Adagietto. Sehr langsam&quot;</bucket>
             </map>
             <map to='#d4a6c8'>
@@ -50178,6 +50155,12 @@
               <bucket>&quot;Beautiful People (feat. Khalid)&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
+              <bucket>&quot;Biochemical Equation&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Cómo estás&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
               <bucket>&quot;Daquele Jeito&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
@@ -50191,9 +50174,6 @@
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Deva Deva&quot;</bucket>
-            </map>
-            <map to='#d7b5a6'>
-              <bucket>&quot;Dheere Dheere Se Meri Zindagi Mein Aana (From \&quot;Aashiqui\&quot;)&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Digital Love&quot;</bucket>
@@ -50580,9 +50560,6 @@
               <bucket>&quot;Kickstart My Heart&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
-              <bucket>&quot;Killer Bombón&quot;</bucket>
-            </map>
-            <map to='#d7b5a6'>
               <bucket>&quot;KING&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
@@ -50626,6 +50603,9 @@
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Lay All Your Love On Me&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
+              <bucket>&quot;Le Le Aayi Coca Cola&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Le luci della città&quot;</bucket>
@@ -51153,6 +51133,9 @@
               <bucket>&quot;Say It Right&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
+              <bucket>&quot;Say Nothing (feat. MAY-A)&quot;</bucket>
+            </map>
+            <map to='#d7b5a6'>
               <bucket>&quot;Schlechtes Vorbild&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
@@ -51387,9 +51370,6 @@
               <bucket>&quot;The Prince That Was Promised&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
-              <bucket>&quot;the ride-&quot;</bucket>
-            </map>
-            <map to='#d7b5a6'>
               <bucket>&quot;The Scientist&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
@@ -51463,9 +51443,6 @@
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Tu Príncipe&quot;</bucket>
-            </map>
-            <map to='#d7b5a6'>
-              <bucket>&quot;Tubarão Te Amo&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
               <bucket>&quot;Tum Tak&quot;</bucket>
@@ -51636,9 +51613,6 @@
               <bucket>&quot;You Are The Sunshine Of My Life&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
-              <bucket>&quot;You Could Be Mine&quot;</bucket>
-            </map>
-            <map to='#d7b5a6'>
               <bucket>&quot;You Give Me Something&quot;</bucket>
             </map>
             <map to='#d7b5a6'>
@@ -51669,7 +51643,13 @@
               <bucket>&quot;海のまにまに&quot;</bucket>
             </map>
             <map to='#e15759'>
+              <bucket>&quot;Ai Papai&quot;</bucket>
+            </map>
+            <map to='#e15759'>
               <bucket>&quot;Beggin&apos;&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Cambaz&quot;</bucket>
             </map>
             <map to='#e15759'>
               <bucket>&quot;CAN&apos;T STOP THE FEELING! (from DreamWorks Animation&apos;s \&quot;TROLLS\&quot;)&quot;</bucket>
@@ -51688,6 +51668,9 @@
             </map>
             <map to='#e15759'>
               <bucket>&quot;Deewangi Deewangi&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Desire (Sub Focus &amp; Dimension)&quot;</bucket>
             </map>
             <map to='#e15759'>
               <bucket>&quot;Detalles (Detalhes)&quot;</bucket>
@@ -52164,9 +52147,6 @@
               <bucket>&quot;Los Cachos&quot;</bucket>
             </map>
             <map to='#e15759'>
-              <bucket>&quot;Los Tragos&quot;</bucket>
-            </map>
-            <map to='#e15759'>
               <bucket>&quot;Losing My Religion (Cover)&quot;</bucket>
             </map>
             <map to='#e15759'>
@@ -52240,9 +52220,6 @@
             </map>
             <map to='#e15759'>
               <bucket>&quot;Meet Me Halfway&quot;</bucket>
-            </map>
-            <map to='#e15759'>
-              <bucket>&quot;Men In Black - From \&quot;Men In Black\&quot; Soundtrack&quot;</bucket>
             </map>
             <map to='#e15759'>
               <bucket>&quot;Mercury: Retrograde&quot;</bucket>
@@ -52521,6 +52498,9 @@
               <bucket>&quot;RADW&quot;</bucket>
             </map>
             <map to='#e15759'>
+              <bucket>&quot;Raja Ji Khoon Kaida&quot;</bucket>
+            </map>
+            <map to='#e15759'>
               <bucket>&quot;Ramen &amp; OJ&quot;</bucket>
             </map>
             <map to='#e15759'>
@@ -52728,6 +52708,9 @@
               <bucket>&quot;Strange Fruit&quot;</bucket>
             </map>
             <map to='#e15759'>
+              <bucket>&quot;Stranger Things&quot;</bucket>
+            </map>
+            <map to='#e15759'>
               <bucket>&quot;Stronger&quot;</bucket>
             </map>
             <map to='#e15759'>
@@ -52926,9 +52909,6 @@
               <bucket>&quot;UN DIA (ONE DAY)&quot;</bucket>
             </map>
             <map to='#e15759'>
-              <bucket>&quot;Un Ratito Mas&quot;</bucket>
-            </map>
-            <map to='#e15759'>
               <bucket>&quot;Una En Un Millón&quot;</bucket>
             </map>
             <map to='#e15759'>
@@ -53076,9 +53056,6 @@
               <bucket>&quot;Y.A.L.A.&quot;</bucket>
             </map>
             <map to='#e15759'>
-              <bucket>&quot;Yaar Ve (From \&quot;Code Name Tiranga\&quot;)&quot;</bucket>
-            </map>
-            <map to='#e15759'>
               <bucket>&quot;Yaz Yaz Yaz&quot;</bucket>
             </map>
             <map to='#e15759'>
@@ -53136,7 +53113,13 @@
               <bucket>&quot;Africa&quot;</bucket>
             </map>
             <map to='#f1ce63'>
+              <bucket>&quot;After LIKE&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
               <bucket>&quot;Bohemian Rhapsody - Remastered 2011&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
+              <bucket>&quot;Breathe - Mefjus &amp; Camo &amp; Krooked Remix&quot;</bucket>
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Dark Light&quot;</bucket>
@@ -53256,6 +53239,9 @@
               <bucket>&quot;False Confidence&quot;</bucket>
             </map>
             <map to='#f1ce63'>
+              <bucket>&quot;FANCY&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
               <bucket>&quot;Fear of the Water&quot;</bucket>
             </map>
             <map to='#f1ce63'>
@@ -53308,9 +53294,6 @@
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Fuentes de Ortiz&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
-              <bucket>&quot;Funky Friday&quot;</bucket>
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Gang Signs (feat. ScHoolboy Q)&quot;</bucket>
@@ -53760,6 +53743,9 @@
               <bucket>&quot;N&apos;oubliez Jamais&quot;</bucket>
             </map>
             <map to='#f1ce63'>
+              <bucket>&quot;Naah Goriye (From \&quot;Bala\&quot;)&quot;</bucket>
+            </map>
+            <map to='#f1ce63'>
               <bucket>&quot;Naina&quot;</bucket>
             </map>
             <map to='#f1ce63'>
@@ -53881,9 +53867,6 @@
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Past Lives (8D Audio)&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
-              <bucket>&quot;Peace Sells - Remastered&quot;</bucket>
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Pendejo&quot;</bucket>
@@ -54330,13 +54313,7 @@
               <bucket>&quot;Thumkeshwari&quot;</bucket>
             </map>
             <map to='#f1ce63'>
-              <bucket>&quot;Tightrope (feat. Big Boi) - Big Boi Vocal Edit&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
               <bucket>&quot;Time in a Bottle&quot;</bucket>
-            </map>
-            <map to='#f1ce63'>
-              <bucket>&quot;To Chalun (From \&quot;Border\&quot;)&quot;</bucket>
             </map>
             <map to='#f1ce63'>
               <bucket>&quot;Toda Forma de Amor&quot;</bucket>
@@ -54594,10 +54571,19 @@
               <bucket>&quot;祝福&quot;</bucket>
             </map>
             <map to='#f28e2b'>
+              <bucket>&quot;115万キロのフィルム&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
               <bucket>&quot;7 Years&quot;</bucket>
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;As It Was&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Black Eyes&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Custer&quot;</bucket>
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;Days To Come&quot;</bucket>
@@ -54933,9 +54919,6 @@
               <bucket>&quot;Kabira (Encore)&quot;</bucket>
             </map>
             <map to='#f28e2b'>
-              <bucket>&quot;Kalla Sohna Nai&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
               <bucket>&quot;Kidnap The Sandy Claws&quot;</bucket>
             </map>
             <map to='#f28e2b'>
@@ -55228,9 +55211,6 @@
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;Ninakkende&quot;</bucket>
-            </map>
-            <map to='#f28e2b'>
-              <bucket>&quot;No Church In The Wild&quot;</bucket>
             </map>
             <map to='#f28e2b'>
               <bucket>&quot;No Hay Nadie Como Tú (feat. Café Tacuba)&quot;</bucket>
@@ -55812,6 +55792,9 @@
               <bucket>&quot;Tonight&apos;s Da Night&quot;</bucket>
             </map>
             <map to='#f28e2b'>
+              <bucket>&quot;Tonto corazón&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
               <bucket>&quot;Touchin, Lovin (feat. Nicki Minaj)&quot;</bucket>
             </map>
             <map to='#f28e2b'>
@@ -56058,7 +56041,13 @@
               <bucket>&quot;還在流浪&quot;</bucket>
             </map>
             <map to='#fabfd2'>
+              <bucket>&quot;Attack&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
               <bucket>&quot;Back In Black&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;Church Bells&quot;</bucket>
             </map>
             <map to='#fabfd2'>
               <bucket>&quot;Darling&quot;</bucket>
@@ -56122,6 +56111,9 @@
             </map>
             <map to='#fabfd2'>
               <bucket>&quot;E. Coli (feat. Earl Sweatshirt)&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
+              <bucket>&quot;eight(Prod.&amp;Feat. SUGA of BTS)&quot;</bucket>
             </map>
             <map to='#fabfd2'>
               <bucket>&quot;El Adormitar De Los Laureles&quot;</bucket>
@@ -56556,9 +56548,6 @@
               <bucket>&quot;Legends Never Die&quot;</bucket>
             </map>
             <map to='#fabfd2'>
-              <bucket>&quot;Let &apos;Em In - 2014 Remaster&quot;</bucket>
-            </map>
-            <map to='#fabfd2'>
               <bucket>&quot;Let Me Down (with Chelsea Cutler)&quot;</bucket>
             </map>
             <map to='#fabfd2'>
@@ -56593,9 +56582,6 @@
             </map>
             <map to='#fabfd2'>
               <bucket>&quot;Llamado de Emergencia&quot;</bucket>
-            </map>
-            <map to='#fabfd2'>
-              <bucket>&quot;Lo Intentamos&quot;</bucket>
             </map>
             <map to='#fabfd2'>
               <bucket>&quot;LO$ER=LO♡ER&quot;</bucket>
@@ -57141,6 +57127,9 @@
               <bucket>&quot;Só um Pagode - Ao Vivo&quot;</bucket>
             </map>
             <map to='#fabfd2'>
+              <bucket>&quot;Só Você&quot;</bucket>
+            </map>
+            <map to='#fabfd2'>
               <bucket>&quot;Sodium&quot;</bucket>
             </map>
             <map to='#fabfd2'>
@@ -57612,7 +57601,13 @@
               <bucket>&quot;花束&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
+              <bucket>&quot;Ain&apos;t Got No Haters (feat. Too Short)&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
               <bucket>&quot;Another Love&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Candy&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
               <bucket>&quot;Chandelier&quot;</bucket>
@@ -57631,6 +57626,9 @@
             </map>
             <map to='#ff9d9a'>
               <bucket>&quot;Did you know that there&apos;s a tunnel under Ocean Blvd&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Dilwa Le Gaile Raja&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
               <bucket>&quot;Dirty Harry&quot;</bucket>
@@ -58026,9 +58024,6 @@
               <bucket>&quot;Like Her Too&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
-              <bucket>&quot;Lil&apos; Boy Fresh&quot;</bucket>
-            </map>
-            <map to='#ff9d9a'>
               <bucket>&quot;Little Bit Of Love&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
@@ -58252,6 +58247,9 @@
             </map>
             <map to='#ff9d9a'>
               <bucket>&quot;Nossa Vida Parou - Ao Vivo&quot;</bucket>
+            </map>
+            <map to='#ff9d9a'>
+              <bucket>&quot;Not Afraid&quot;</bucket>
             </map>
             <map to='#ff9d9a'>
               <bucket>&quot;Nota de Amor (feat. Daddy Yankee)&quot;</bucket>
@@ -59019,13 +59017,22 @@
               <bucket>&quot;24K Magic&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
+              <bucket>&quot;Aafat (From \&quot;Liger\&quot;)&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
               <bucket>&quot;bad guy&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;BORN FREE&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;Dandelions - slowed + reverb&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;dddd&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
+              <bucket>&quot;DE CAROLINA&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;Dear August&quot;</bucket>
@@ -59341,9 +59348,6 @@
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;I Will Possess Your Heart&quot;</bucket>
-            </map>
-            <map to='#ffbe7d'>
-              <bucket>&quot;I&apos;ll Be There For You&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
               <bucket>&quot;I&apos;m a Player - Street Version&quot;</bucket>
@@ -60414,6 +60418,9 @@
               <bucket>&quot;What&apos;s New Pussycat?&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
+              <bucket>&quot;What&apos;s The Difference&quot;</bucket>
+            </map>
+            <map to='#ffbe7d'>
               <bucket>&quot;When Legends Rise&quot;</bucket>
             </map>
             <map to='#ffbe7d'>
@@ -60549,6 +60556,9 @@
             </map>
             <map to='#79706e'>
               <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Tempo:qk]&quot;</bucket>
+            </map>
+            <map to='#86bcb6'>
+              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[avg:Loudness:qk]&quot;</bucket>
             </map>
             <map to='#86bcb6'>
               <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Loudness:qk]&quot;</bucket>
@@ -66872,20 +66882,20 @@
   <actions>
     <action caption='Filter 1 (generated)' name='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]'>
       <activation auto-clear='true' type='on-select' />
-      <source dashboard='Dashboard 3' type='sheet'>
+      <source dashboard='Artist Dashboard' type='sheet'>
         <exclude-sheet name='Artistest Stream (for filter)' />
       </source>
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
-        <param name='target' value='Dashboard 3' />
+        <param name='target' value='Artist Dashboard' />
       </command>
     </action>
     <action caption='Filter 2 (generated)' name='[Action2_C9996CB7E98842D3B72FB3EC04897651]'>
       <activation auto-clear='true' type='on-select' />
-      <source dashboard='Dashboard 3' type='sheet' worksheet='Artistest Stream (for filter)' />
+      <source dashboard='Artist Dashboard' type='sheet' worksheet='Artistest Stream (for filter)' />
       <command command='tsc:tsl-filter'>
         <param name='special-fields' value='all' />
-        <param name='target' value='Dashboard 3' />
+        <param name='target' value='Artist Dashboard' />
       </command>
     </action>
   </actions>
@@ -66930,30 +66940,39 @@
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Artist]' />
+              <groupfilter function='level-members' level='[RowID ]' />
+              <groupfilter function='level-members' level='[Track]' />
+            </groupfilter>
+          </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]'>
             <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <alphabetic-sort column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' direction='ASC' />
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
-            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='250' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
                 <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
               </groupfilter>
             </groupfilter>
           </filter>
-          <shelf-sorts>
-            <shelf-sort-v2 dimension-to-sort='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' shelf='rows' />
-          </shelf-sorts>
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='cell'>
             <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]' value='211' />
+          </style-rule>
+          <style-rule element='header'>
+            <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' value='160' />
           </style-rule>
         </style>
         <panes>
@@ -67007,11 +67026,18 @@
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Artist]' />
+              <groupfilter function='level-members' level='[RowID ]' />
+              <groupfilter function='level-members' level='[Track]' />
+            </groupfilter>
+          </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]'>
             <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
-            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='250' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
                 <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
               </groupfilter>
@@ -67021,6 +67047,7 @@
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -67094,8 +67121,15 @@
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]'>
+            <groupfilter function='crossjoin' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[Artist]' />
+              <groupfilter function='level-members' level='[RowID ]' />
+              <groupfilter function='level-members' level='[Track]' />
+            </groupfilter>
+          </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
-            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='250' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
                 <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
               </groupfilter>
@@ -67104,6 +67138,7 @@
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]</column>
           </slices>
           <aggregation value='true' />
         </view>
@@ -67169,6 +67204,12 @@
             <column-instance column='[Stream]' derivation='Sum' name='[sum:Stream:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
+            <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]'>
+            <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
             <groupfilter count='250' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
@@ -67180,10 +67221,17 @@
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Views:qk]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Views:qk]' field-type='quantitative' max='13765866642' min='-668017383' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' field-type='quantitative' max='5516434814' min='-265206245' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -67214,20 +67262,55 @@
     <worksheet name='Sheet 6'>
       <table>
         <view>
-          <datasources />
+          <datasources>
+            <datasource caption='Data' name='federated.1lnqho811ylboe1flc8j614bny1e' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1lnqho811ylboe1flc8j614bny1e'>
+            <column datatype='string' name='[Artist]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Loudness]' role='measure' type='quantitative' />
+            <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Stream]' role='measure' type='quantitative' />
+            <column datatype='string' name='[Track]' role='dimension' type='nominal' />
+            <column-instance column='[Loudness]' derivation='Avg' name='[avg:Loudness:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Track]' derivation='None' name='[none:Track:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
+            <groupfilter count='100' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
+          <alphabetic-sort column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' direction='ASC' />
+          <slices>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
+          </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='size-bar' field='[federated.1lnqho811ylboe1flc8j614bny1e].[avg:Loudness:qk]' field-type='quantitative' max-size='1' min-size='0.005' type='centersize' />
+          </style-rule>
+          <style-rule element='refline'>
+            <format attr='stroke-color' id='refline0' value='#000000' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' />
+              <lod column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' />
+            </encodings>
           </pane>
         </panes>
-        <rows />
-        <cols />
+        <rows>[federated.1lnqho811ylboe1flc8j614bny1e].[avg:Loudness:qk]</rows>
+        <cols>[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]</cols>
       </table>
       <simple-id uuid='{4B5EC5FD-2B6D-48A4-BBC1-46ADA5B9906B}' />
     </worksheet>
@@ -67255,35 +67338,20 @@
   <dashboards>
     <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Artist Dashboard'>
       <style />
-      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
-      <zones />
-      <devicelayouts>
-        <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
-          <zones>
-            <zone h='100000' id='12' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='11' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000' />
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='8' />
-              </zone-style>
-            </zone>
-          </zones>
-        </devicelayout>
-      </devicelayouts>
-      <simple-id uuid='{50061C2F-AFC4-4952-8FB3-27B05FA68FE7}' />
-    </dashboard>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 3'>
-      <style />
-      <size maxheight='800' maxwidth='1500' minheight='800' minwidth='1500' sizing-mode='fixed' />
+      <size maxheight='1000' maxwidth='1500' minheight='1000' minwidth='1500' sizing-mode='fixed' />
+      <datasources>
+        <datasource caption='Data' name='federated.1lnqho811ylboe1flc8j614bny1e' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1lnqho811ylboe1flc8j614bny1e'>
+        <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
+        <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='98000' id='12' param='horz' type-v2='layout-flow' w='98934' x='533' y='1000'>
-            <zone h='98000' id='7' param='horz' type-v2='layout-flow' w='98934' x='533' y='1000'>
-              <zone h='98000' id='5' type-v2='layout-basic' w='98934' x='533' y='1000'>
-                <zone h='87250' id='3' name='Energy Treemap' w='70000' x='533' y='1000'>
+          <zone h='98400' id='12' param='horz' type-v2='layout-flow' w='98934' x='533' y='800'>
+            <zone h='98400' id='7' param='horz' type-v2='layout-flow' w='98934' x='533' y='800'>
+              <zone h='98400' id='5' type-v2='layout-basic' w='98934' x='533' y='800'>
+                <zone h='70900' id='3' name='Energy Treemap' w='67397' x='533' y='800'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67291,7 +67359,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='49000' id='9' name='Artistest Stream (for filter)' w='28934' x='70533' y='50000'>
+                <zone h='39723' id='9' name='Artistest Stream (for filter)' w='31537' x='67930' y='44477'>
                   <layout-cache fixed-size-h='1736' fixed-size-w='267' type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -67300,8 +67368,9 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='10750' id='13' param='vert' type-v2='layout-flow' w='70000' x='533' y='88250'>
-                  <zone h='10125' id='8' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type-v2='color' w='70000' x='533' y='88250'>
+                <zone h='27500' id='13' param='vert' type-v2='layout-flow' w='67397' x='533' y='71700'>
+                  <zone h='27500' id='18' name='Popularity Scatterplot' w='67397' x='533' y='71700'>
+                    <layout-cache has-max-size-h='true' maxheight='1202' minheight='1202' type-h='scalable' type-w='fixed' />
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -67310,7 +67379,23 @@
                     </zone-style>
                   </zone>
                 </zone>
-                <zone h='49000' id='16' name='Artists by Liveness (for filter)' w='28934' x='70533' y='1000'>
+                <zone h='43677' id='16' name='Artists by Liveness (for filter)' w='31537' x='67930' y='800'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='203' h='7500' id='19' is-fixed='true' mode='typeinlist' name='Popularity Scatterplot' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]' type-v2='filter' values='database' w='31537' x='67930' y='91700'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='100' h='7500' id='8' is-fixed='true' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type-v2='color' w='31537' x='67930' y='84200'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67375,28 +67460,6 @@
         </devicelayout>
       </devicelayouts>
       <simple-id uuid='{318B4707-ADE4-47AB-B9E6-108D8B8649F3}' />
-    </dashboard>
-    <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Dashboard 4'>
-      <style />
-      <size maxheight='800' maxwidth='1000' minheight='800' minwidth='1000' />
-      <zones />
-      <devicelayouts>
-        <devicelayout auto-generated='true' name='Phone'>
-          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
-          <zones>
-            <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='3' param='vert' type-v2='layout-flow' w='98400' x='800' y='1000' />
-              <zone-style>
-                <format attr='border-color' value='#000000' />
-                <format attr='border-style' value='none' />
-                <format attr='border-width' value='0' />
-                <format attr='margin' value='8' />
-              </zone-style>
-            </zone>
-          </zones>
-        </devicelayout>
-      </devicelayouts>
-      <simple-id uuid='{97284004-17E2-418E-9B13-DB78348B8B78}' />
     </dashboard>
     <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Listener Dashboard'>
       <style />
@@ -67585,6 +67648,11 @@
             <card type='title' />
           </strip>
         </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' type='color' />
+          </strip>
+        </edge>
       </cards>
       <simple-id uuid='{8F34740F-9970-4E37-ADA1-8249F8568EEE}' />
     </window>
@@ -67611,12 +67679,7 @@
       </cards>
       <simple-id uuid='{CD9DDC21-F838-477F-8C8E-B53A8851B021}' />
     </window>
-    <window class='dashboard' name='Artist Dashboard'>
-      <viewpoints />
-      <active id='-1' />
-      <simple-id uuid='{CDA63800-EEF6-4184-A543-132055CDD563}' />
-    </window>
-    <window class='dashboard' maximized='true' name='Dashboard 3'>
+    <window class='dashboard' maximized='true' name='Artist Dashboard'>
       <viewpoints>
         <viewpoint name='Artistest Stream (for filter)'>
           <zoom type='fit-width' />
@@ -67625,8 +67688,11 @@
           <zoom type='entire-view' />
         </viewpoint>
         <viewpoint name='Energy Treemap' />
+        <viewpoint name='Popularity Scatterplot'>
+          <zoom type='entire-view' />
+        </viewpoint>
       </viewpoints>
-      <active id='3' />
+      <active id='8' />
       <simple-id uuid='{6FBA0A43-24FB-457C-9163-BBAF6798C743}' />
     </window>
     <window class='dashboard' name='Listener Dashboard'>
@@ -67636,13 +67702,8 @@
     </window>
     <window class='dashboard' name='Story 1'>
       <viewpoints />
-      <active id='4' />
-      <simple-id uuid='{C62EB145-A79A-47C1-8F91-C7F2F7B01C36}' />
-    </window>
-    <window class='dashboard' name='Dashboard 4'>
-      <viewpoints />
       <active id='-1' />
-      <simple-id uuid='{CC3DB38F-4254-4A24-B107-5DADA19F530B}' />
+      <simple-id uuid='{C62EB145-A79A-47C1-8F91-C7F2F7B01C36}' />
     </window>
   </windows>
 </workbook>
