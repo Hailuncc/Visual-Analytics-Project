@@ -6,12 +6,15 @@
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <SetMembershipControl />
     <SheetIdentifierTracking />
+    <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
   <preferences>
@@ -60530,6 +60533,9 @@
           </encoding>
           <encoding attr='color' field='[:Measure Names]' type='palette'>
             <map to='#499894'>
+              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]&quot;</bucket>
+            </map>
+            <map to='#499894'>
               <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]&quot;</bucket>
             </map>
             <map to='#4e79a7'>
@@ -66897,13 +66903,30 @@
           </datasources>
           <datasource-dependencies datasource='federated.1lnqho811ylboe1flc8j614bny1e'>
             <column datatype='string' name='[Artist]' role='dimension' type='nominal' />
+            <column datatype='real' name='[Energy]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Liveness]' role='measure' type='quantitative' />
             <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
             <column datatype='integer' name='[Stream]' role='measure' type='quantitative' />
             <column datatype='string' name='[Track]' role='dimension' type='nominal' />
             <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
             <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Energy]' derivation='Sum' name='[sum:Energy:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Liveness]' derivation='Sum' name='[sum:Liveness:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Stream]' derivation='Sum' name='[sum:Stream:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <manual-sort column='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]' direction='ASC'>
+            <dictionary>
+              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]&quot;</bucket>
+              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]&quot;</bucket>
+            </dictionary>
+          </manual-sort>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
@@ -66911,20 +66934,28 @@
             <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
-            <groupfilter count='100' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
                 <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
               </groupfilter>
             </groupfilter>
           </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' direction='ASC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' shelf='rows' />
+          </shelf-sorts>
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='cell'>
+            <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]' value='211' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -66932,17 +66963,21 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' />
+              <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[Multiple Values]' />
             </encodings>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-show' value='true' />
               </style-rule>
+              <style-rule element='pane'>
+                <format attr='minwidth' value='-1' />
+                <format attr='maxwidth' value='-1' />
+              </style-rule>
             </style>
           </pane>
         </panes>
         <rows>[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]</rows>
-        <cols />
+        <cols>[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]</cols>
       </table>
       <simple-id uuid='{C79A8D1F-91F5-432D-8945-28A2346830A3}' />
     </worksheet>
@@ -66962,19 +66997,52 @@
           <datasource-dependencies datasource='federated.1lnqho811ylboe1flc8j614bny1e'>
             <column datatype='string' name='[Artist]' role='dimension' type='nominal' />
             <column datatype='real' name='[Liveness]' role='measure' type='quantitative' />
+            <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Stream]' role='measure' type='quantitative' />
             <column datatype='string' name='[Track]' role='dimension' type='nominal' />
             <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
+            <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
             <column-instance column='[Liveness]' derivation='Sum' name='[sum:Liveness:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
+            <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]'>
             <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
+          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
+            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+              <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
+                <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-manual-selection='true' user:ui-manual-selection-all-when-empty='true' user:ui-manual-selection-is-empty='true' user:ui-marker='enumerate' />
+              </groupfilter>
+            </groupfilter>
+          </filter>
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
+            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
           </slices>
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]' type='custom-interpolated'>
+              <color-palette custom='true' name='' type='ordered-sequential'>
+                <color>#f1f1f1</color>
+                <color>#f2e2da</color>
+                <color>#f3d3c3</color>
+                <color>#f5c4ab</color>
+                <color>#f6b493</color>
+                <color>#f8a57c</color>
+                <color>#f99563</color>
+                <color>#fa854b</color>
+                <color>#fc7532</color>
+                <color>#fd6519</color>
+                <color>#ff5500</color>
+              </color-palette>
+            </encoding>
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
@@ -66982,28 +67050,21 @@
             </view>
             <mark class='Circle' />
             <encodings>
-              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]' />
               <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' />
+              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]' />
               <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' />
             </encodings>
-            <customized-label>
-              <formatted-text>
-                <run fontsize='10'>&lt;</run>
-                <run fontsize='10'>[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]</run>
-                <run fontsize='10'>&gt;</run>
-              </formatted-text>
-            </customized-label>
             <style>
               <style-rule element='mark'>
                 <format attr='mark-labels-line-first' value='true' />
                 <format attr='mark-labels-line-last' value='true' />
                 <format attr='mark-labels-range-min' value='true' />
                 <format attr='mark-labels-range-max' value='true' />
-                <format attr='mark-labels-mode' value='all' />
                 <format attr='mark-labels-range-scope' value='pane' />
                 <format attr='mark-labels-range-field' value='' />
-                <format attr='mark-labels-show' value='true' />
                 <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-mode' value='all' />
               </style-rule>
             </style>
           </pane>
@@ -67034,7 +67095,7 @@
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]'>
-            <groupfilter count='100' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
+            <groupfilter count='200' end='top' function='end' units='records' user:ui-marker='end' user:ui-top-by-field='true'>
               <groupfilter direction='DESC' expression='SUM([Stream])' function='order' user:ui-marker='order'>
                 <groupfilter function='level-members' level='[none:RowID :ok]' user:ui-enumeration='all' user:ui-marker='enumerate' />
               </groupfilter>
@@ -67059,9 +67120,9 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' />
-              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' />
+              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' />
               <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' />
+              <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' />
             </encodings>
             <style>
               <style-rule element='cell'>
@@ -67222,7 +67283,7 @@
           <zone h='98000' id='12' param='horz' type-v2='layout-flow' w='98934' x='533' y='1000'>
             <zone h='98000' id='7' param='horz' type-v2='layout-flow' w='98934' x='533' y='1000'>
               <zone h='98000' id='5' type-v2='layout-basic' w='98934' x='533' y='1000'>
-                <zone h='87250' id='3' name='Energy Treemap' w='68934' x='533' y='1000'>
+                <zone h='87250' id='3' name='Energy Treemap' w='70000' x='533' y='1000'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67230,7 +67291,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='98000' id='9' name='Artistest Stream (for filter)' w='30000' x='69467' y='1000'>
+                <zone h='49000' id='9' name='Artistest Stream (for filter)' w='28934' x='70533' y='50000'>
                   <layout-cache fixed-size-h='1736' fixed-size-w='267' type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -67239,8 +67300,8 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='10750' id='13' param='vert' type-v2='layout-flow' w='68934' x='533' y='88250'>
-                  <zone fixed-size='340' h='10750' id='8' is-fixed='true' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' type-v2='color' w='68934' x='533' y='88250'>
+                <zone h='10750' id='13' param='vert' type-v2='layout-flow' w='70000' x='533' y='88250'>
+                  <zone h='10125' id='8' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type-v2='color' w='70000' x='533' y='88250'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
@@ -67248,6 +67309,14 @@
                       <format attr='margin' value='4' />
                     </zone-style>
                   </zone>
+                </zone>
+                <zone h='49000' id='16' name='Artists by Liveness (for filter)' w='28934' x='70533' y='1000'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
                 </zone>
               </zone>
             </zone>
@@ -67275,7 +67344,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='340' h='10750' id='8' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' type-v2='color' w='68934' x='533' y='88250'>
+                <zone fixed-size='340' h='10750' id='17' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' type-v2='color' w='68934' x='533' y='88250'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67438,7 +67507,7 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
-            <card pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' type='color' />
+            <card pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -67451,6 +67520,7 @@
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
+            <card type='measures' />
           </strip>
         </edge>
         <edge name='top'>
@@ -67467,7 +67537,7 @@
       </cards>
       <simple-id uuid='{81A5367E-0EAC-41A5-BCE0-A56C0FDFB446}' />
     </window>
-    <window class='worksheet' maximized='true' name='Artists by Liveness (for filter)'>
+    <window class='worksheet' name='Artists by Liveness (for filter)'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -67546,6 +67616,19 @@
       <active id='-1' />
       <simple-id uuid='{CDA63800-EEF6-4184-A543-132055CDD563}' />
     </window>
+    <window class='dashboard' maximized='true' name='Dashboard 3'>
+      <viewpoints>
+        <viewpoint name='Artistest Stream (for filter)'>
+          <zoom type='fit-width' />
+        </viewpoint>
+        <viewpoint name='Artists by Liveness (for filter)'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Energy Treemap' />
+      </viewpoints>
+      <active id='3' />
+      <simple-id uuid='{6FBA0A43-24FB-457C-9163-BBAF6798C743}' />
+    </window>
     <window class='dashboard' name='Listener Dashboard'>
       <viewpoints />
       <active id='-1' />
@@ -67555,16 +67638,6 @@
       <viewpoints />
       <active id='4' />
       <simple-id uuid='{C62EB145-A79A-47C1-8F91-C7F2F7B01C36}' />
-    </window>
-    <window class='dashboard' name='Dashboard 3'>
-      <viewpoints>
-        <viewpoint name='Artistest Stream (for filter)'>
-          <zoom type='fit-width' />
-        </viewpoint>
-        <viewpoint name='Energy Treemap' />
-      </viewpoints>
-      <active id='3' />
-      <simple-id uuid='{6FBA0A43-24FB-457C-9163-BBAF6798C743}' />
     </window>
     <window class='dashboard' name='Dashboard 4'>
       <viewpoints />
