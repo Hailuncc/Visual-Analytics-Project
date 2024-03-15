@@ -6,12 +6,15 @@
     <_.fcp.AccessibleZoneTabOrder.true...AccessibleZoneTabOrder />
     <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
     <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
     <_.fcp.MarkAnimation.true...MarkAnimation />
     <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
     <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
     <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
     <SetMembershipControl />
     <SheetIdentifierTracking />
+    <_.fcp.SingleValuePerNestSorting.true...SingleValuePerNestSorting />
     <SortTagCleanup />
     <WindowsPersistSimpleIdentifiers />
     <ZoneBackgroundTransparency />
@@ -31657,9 +31660,6 @@
               <bucket>&quot;Tchaikovsky: The Nutcracker, Op. 71, Act II: No. 14c, Pas de deux. Variation II \&quot;Dance of the Sugar Plum Fairy\&quot;&quot;</bucket>
             </map>
             <map to='#499894'>
-              <bucket>&quot;Te Equivocaste&quot;</bucket>
-            </map>
-            <map to='#499894'>
               <bucket>&quot;Te Mando Flores&quot;</bucket>
             </map>
             <map to='#499894'>
@@ -32177,6 +32177,9 @@
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Find U Again (feat. Camila Cabello)&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;Finesse - Remix; feat. Cardi B&quot;</bucket>
             </map>
             <map to='#4e79a7'>
               <bucket>&quot;Fireball (feat. John Ryan)&quot;</bucket>
@@ -66913,32 +66916,16 @@
           </datasources>
           <datasource-dependencies datasource='federated.1lnqho811ylboe1flc8j614bny1e'>
             <column datatype='string' name='[Artist]' role='dimension' type='nominal' />
-            <column datatype='real' name='[Energy]' role='measure' type='quantitative' />
-            <column datatype='real' name='[Liveness]' role='measure' type='quantitative' />
             <column caption='RowID' datatype='integer' name='[RowID ]' role='dimension' type='ordinal' />
             <column datatype='integer' name='[Stream]' role='measure' type='quantitative' />
             <column datatype='string' name='[Track]' role='dimension' type='nominal' />
             <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
             <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
-            <column-instance column='[Energy]' derivation='Sum' name='[sum:Energy:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[Liveness]' derivation='Sum' name='[sum:Liveness:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Track]' derivation='None' name='[none:Track:nk]' pivot='key' type='nominal' />
             <column-instance column='[Stream]' derivation='Sum' name='[sum:Stream:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
-          <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]'>
-            <groupfilter function='union' user:op='manual'>
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]&quot;' />
-              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]&quot;' />
-            </groupfilter>
-          </filter>
-          <manual-sort column='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]' direction='ASC'>
-            <dictionary>
-              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]&quot;</bucket>
-              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]&quot;</bucket>
-              <bucket>&quot;[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]&quot;</bucket>
-            </dictionary>
-          </manual-sort>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
-            <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Artist]' member='&quot;Billie Eilish&quot;' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -66958,21 +66945,20 @@
               </groupfilter>
             </groupfilter>
           </filter>
+          <_.fcp.SingleValuePerNestSorting.true...single-value-per-nest-shelf-sorts>
+            <single-value-per-nest-shelf-sort dimension-to-sort='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' direction='ASC' measure-to-sort-by='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' shelf='rows' />
+          </_.fcp.SingleValuePerNestSorting.true...single-value-per-nest-shelf-sorts>
           <slices>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]</column>
-            <column>[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]</column>
             <column>[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='cell'>
-            <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]' value='211' />
-          </style-rule>
           <style-rule element='header'>
-            <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' value='160' />
+            <format attr='width' field='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' value='88' />
           </style-rule>
         </style>
         <panes>
@@ -66982,7 +66968,7 @@
             </view>
             <mark class='Automatic' />
             <encodings>
-              <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[Multiple Values]' />
+              <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -66995,8 +66981,8 @@
             </style>
           </pane>
         </panes>
-        <rows>[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]</rows>
-        <cols>[federated.1lnqho811ylboe1flc8j614bny1e].[:Measure Names]</cols>
+        <rows>([federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk] / [federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk])</rows>
+        <cols />
       </table>
       <simple-id uuid='{C79A8D1F-91F5-432D-8945-28A2346830A3}' />
     </worksheet>
@@ -67022,6 +67008,7 @@
             <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
             <column-instance column='[RowID ]' derivation='None' name='[none:RowID :ok]' pivot='key' type='ordinal' />
             <column-instance column='[Liveness]' derivation='Sum' name='[sum:Liveness:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Stream]' derivation='Sum' name='[sum:Stream:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
             <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -67078,8 +67065,9 @@
             <mark class='Circle' />
             <encodings>
               <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' />
-              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]' />
+              <size column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Stream:qk]' />
               <text column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Artist:nk]' />
+              <lod column='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Liveness:qk]' />
             </encodings>
             <style>
               <style-rule element='mark'>
@@ -67119,7 +67107,7 @@
             <column-instance column='[Stream]' derivation='Sum' name='[sum:Stream:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
-            <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Artist]' member='&quot;Billie Eilish&quot;' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist,RowID,Track)]'>
             <groupfilter function='crossjoin' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate'>
@@ -67205,7 +67193,7 @@
             <column-instance column='[Views]' derivation='Sum' name='[sum:Views:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Artist)]'>
-            <groupfilter function='level-members' level='[Artist]' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+            <groupfilter function='member' level='[Artist]' member='&quot;Billie Eilish&quot;' user:ui-action-filter='[Action2_C9996CB7E98842D3B72FB3EC04897651]' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
           </filter>
           <filter class='categorical' column='[federated.1lnqho811ylboe1flc8j614bny1e].[Action (Track)]'>
             <groupfilter function='level-members' level='[Track]' user:ui-action-filter='[Action1_9934BCBC11AD4E0DBBC8B6A4377928EC]' user:ui-enumeration='all' user:ui-marker='enumerate' />
@@ -67338,7 +67326,7 @@
   <dashboards>
     <dashboard _.fcp.AccessibleZoneTabOrder.true...enable-sort-zone-taborder='true' name='Artist Dashboard'>
       <style />
-      <size maxheight='1000' maxwidth='1500' minheight='1000' minwidth='1500' sizing-mode='fixed' />
+      <size maxheight='900' maxwidth='1500' minheight='900' minwidth='1500' sizing-mode='fixed' />
       <datasources>
         <datasource caption='Data' name='federated.1lnqho811ylboe1flc8j614bny1e' />
       </datasources>
@@ -67348,10 +67336,10 @@
       </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='98400' id='12' param='horz' type-v2='layout-flow' w='98934' x='533' y='800'>
-            <zone h='98400' id='7' param='horz' type-v2='layout-flow' w='98934' x='533' y='800'>
-              <zone h='98400' id='5' type-v2='layout-basic' w='98934' x='533' y='800'>
-                <zone h='70900' id='3' name='Energy Treemap' w='67397' x='533' y='800'>
+          <zone h='98222' id='12' param='horz' type-v2='layout-flow' w='98934' x='533' y='889'>
+            <zone h='98222' id='7' param='horz' type-v2='layout-flow' w='98934' x='533' y='889'>
+              <zone h='98222' id='5' type-v2='layout-basic' w='98934' x='533' y='889'>
+                <zone h='63667' id='3' name='Energy Treemap' w='68600' x='533' y='889'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67359,7 +67347,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='39723' id='9' name='Artistest Stream (for filter)' w='31537' x='67930' y='44477'>
+                <zone h='47138' id='9' name='Artistest Stream (for filter)' w='30334' x='69133' y='44485'>
                   <layout-cache fixed-size-h='1736' fixed-size-w='267' type-h='fixed' type-w='fixed' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -67368,8 +67356,8 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone h='27500' id='13' param='vert' type-v2='layout-flow' w='67397' x='533' y='71700'>
-                  <zone h='27500' id='18' name='Popularity Scatterplot' w='67397' x='533' y='71700'>
+                <zone h='31000' id='13' param='vert' type-v2='layout-flow' w='68600' x='533' y='68111'>
+                  <zone h='31000' id='18' name='Popularity Scatterplot' w='68600' x='533' y='68111'>
                     <layout-cache has-max-size-h='true' maxheight='1202' minheight='1202' type-h='scalable' type-w='fixed' />
                     <zone-style>
                       <format attr='border-color' value='#000000' />
@@ -67379,7 +67367,7 @@
                     </zone-style>
                   </zone>
                 </zone>
-                <zone h='43677' id='16' name='Artists by Liveness (for filter)' w='31537' x='67930' y='800'>
+                <zone h='43596' id='16' name='Artists by Liveness (for filter)' w='30334' x='69133' y='889'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67387,7 +67375,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='203' h='7500' id='19' is-fixed='true' mode='typeinlist' name='Popularity Scatterplot' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]' type-v2='filter' values='database' w='31537' x='67930' y='91700'>
+                <zone fixed-size='203' h='7488' id='19' is-fixed='true' mode='typeinlist' name='Popularity Scatterplot' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:RowID :ok]' type-v2='filter' values='database' w='30334' x='69133' y='91623'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67395,7 +67383,7 @@
                     <format attr='margin' value='4' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='100' h='7500' id='8' is-fixed='true' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type-v2='color' w='31537' x='67930' y='84200'>
+                <zone fixed-size='100' h='3555' id='8' is-fixed='true' name='Energy Treemap' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[sum:Energy:qk]' type-v2='color' w='68600' x='533' y='64556'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -67583,7 +67571,6 @@
             <card type='pages' />
             <card type='filters' />
             <card type='marks' />
-            <card type='measures' />
           </strip>
         </edge>
         <edge name='top'>
@@ -67687,12 +67674,14 @@
         <viewpoint name='Artists by Liveness (for filter)'>
           <zoom type='entire-view' />
         </viewpoint>
-        <viewpoint name='Energy Treemap' />
+        <viewpoint name='Energy Treemap'>
+          <zoom type='entire-view' />
+        </viewpoint>
         <viewpoint name='Popularity Scatterplot'>
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='8' />
+      <active id='3' />
       <simple-id uuid='{6FBA0A43-24FB-457C-9163-BBAF6798C743}' />
     </window>
     <window class='dashboard' name='Listener Dashboard'>
