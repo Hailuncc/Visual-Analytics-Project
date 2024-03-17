@@ -97030,6 +97030,14 @@
         <param name='target' value='Spotify' />
       </command>
     </action>
+    <action caption='Filter 3 (generated)' name='[Action3_1D82E21C35FD4A1A8BB56FD912607A34]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='YouTube' type='sheet' worksheet='Song Likes to Views' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='YouTube' />
+      </command>
+    </action>
   </actions>
   <worksheets>
     <worksheet name='Artistest Stream (for filter)'>
@@ -97645,12 +97653,10 @@
               <calculation class='tableau' formula='AVG([Likes])/AVG([Views])' />
             </column>
             <column datatype='integer' name='[Likes]' role='measure' type='quantitative' />
-            <column datatype='string' name='[Title]' role='dimension' type='nominal' />
             <column datatype='string' name='[Track]' role='dimension' type='nominal' />
             <column datatype='integer' name='[Views]' role='measure' type='quantitative' />
             <column-instance column='[Likes]' derivation='Avg' name='[avg:Likes:qk]' pivot='key' type='quantitative' />
             <column-instance column='[Artist]' derivation='None' name='[none:Artist:nk]' pivot='key' type='nominal' />
-            <column-instance column='[Title]' derivation='None' name='[none:Title:nk]' pivot='key' type='nominal' />
             <column-instance column='[Track]' derivation='None' name='[none:Track:nk]' pivot='key' type='nominal' />
             <column-instance column='[Calculation_774900676891074562]' derivation='User' name='[usr:Calculation_774900676891074562:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
@@ -97681,10 +97687,13 @@
               <breakdown value='auto' />
             </view>
             <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' />
+            </encodings>
           </pane>
         </panes>
         <rows>[federated.1lnqho811ylboe1flc8j614bny1e].[usr:Calculation_774900676891074562:qk]</rows>
-        <cols>([federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk] / [federated.1lnqho811ylboe1flc8j614bny1e].[none:Title:nk])</cols>
+        <cols>[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]</cols>
       </table>
       <simple-id uuid='{E3020E70-EC1B-4124-82F6-4D4E3F801C91}' />
     </worksheet>
@@ -98130,7 +98139,7 @@
               </zone>
             </zone>
             <zone fixed-size='160' h='98014' id='28' is-fixed='true' param='vert' type-v2='layout-flow' w='9975' x='89526' y='993'>
-              <zone h='98014' id='30' name='Song Likes to Views' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Title:nk]' type-v2='color' w='9975' x='89526' y='993'>
+              <zone h='98014' id='30' name='Song Likes to Views' pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' type-v2='color' w='9975' x='89526' y='993'>
                 <zone-style>
                   <format attr='border-color' value='#000000' />
                   <format attr='border-style' value='none' />
@@ -98441,7 +98450,7 @@
       </cards>
       <simple-id uuid='{8CF42078-D265-44E5-A86F-CAA04ED6AA1C}' />
     </window>
-    <window class='worksheet' maximized='true' name='Song Likes to Views'>
+    <window class='worksheet' name='Song Likes to Views'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -98459,6 +98468,11 @@
           </strip>
           <strip size='30'>
             <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1lnqho811ylboe1flc8j614bny1e].[none:Track:nk]' type='color' />
           </strip>
         </edge>
       </cards>
@@ -98538,7 +98552,7 @@
       <active id='49' />
       <simple-id uuid='{6FBA0A43-24FB-457C-9163-BBAF6798C743}' />
     </window>
-    <window class='dashboard' name='YouTube'>
+    <window class='dashboard' maximized='true' name='YouTube'>
       <viewpoints>
         <viewpoint name='Colab' />
         <viewpoint name='Single vs Album' />
