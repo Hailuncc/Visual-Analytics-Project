@@ -1,0 +1,38 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    grid-gap: 20px;
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+#spotify-streams-to-measures, #youtube-views-to-likes, #spotify-streams-to-metrics,
+#youtube-views-and-likes-to-metrics, #artist-information-box {
+    border: 2px solid black; 
+    margin: 10px;
+    padding: 10px;
+}
+
+.upper-half {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin-bottom: 40px; 
+}
+
+#spotify-streams-to-measures, #youtube-views-to-likes {
+    height: 100%;
+}
+
+.lower-half {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+#spotify-streams-to-metrics, #youtube-views-and-likes-to-metrics, #artist-information-box {
+    height: 100%;
+}
