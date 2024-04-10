@@ -12,14 +12,13 @@ class YTScatterPlot {
         constructor(_config, _data, _colorScale) {
             this.config = {
                 parentElement: _config.parentElement,
-                containerWidth: _config.containerWidth || 500,
+                containerWidth: _config.containerWidth || 600,
                 containerHeight: _config.containerHeight || 500,
-                margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 35},
+                margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 60},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
             this.colorScale = _colorScale;
-            
             this.initVis();
 
         }
@@ -71,14 +70,14 @@ class YTScatterPlot {
                 .attr('class', 'axis y-axis');
     
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
-            console.log(vis.Artist)
+            
             // add axis title for Y
             vis.svg.append('text')
                 .attr('class', 'axis-title')
                 .attr('x', 0)
                 .attr('y', 25)
                 .attr('dy', '0.71em')
-                .text('Fire Insurance');
+                .text('Likes');
     
             // add axis title for X
             vis.chart.append('text')
@@ -87,7 +86,7 @@ class YTScatterPlot {
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
-                .text('Rent Amount');
+                .text('Views');
         }
     
         /**
@@ -99,7 +98,7 @@ class YTScatterPlot {
             vis.colorValue = d => d.Artist;
             vis.xValue = d => d.Views;
             vis.yValue = d => d.Likes;
-    
+            
             vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
             vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
 
@@ -112,7 +111,6 @@ class YTScatterPlot {
          */
         renderVis() {
             let vis = this;
-    
             // add cicrles
             const bubbles = vis.chart
                 .selectAll('.point')
