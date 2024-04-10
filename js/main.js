@@ -35,7 +35,17 @@ d3.csv("data/Updated_Data.csv").then(_date => {
         d.Tempo = parseFloat(d["Tempo"]);
         d.Views = +d["Views"]; //Does not need a float
         d.Likes = +d["Likes"]; //Does not need a float
-    })
+    });
+
+    data = data.filter(function (d) {
+        return(
+            d.Artist === "Joyner Lucas" && "Wu-Tang Clan"
+        )
+    });
+    
+
+    data
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
     spotifyTreeMap = new TreeMap(
 
@@ -47,6 +57,7 @@ d3.csv("data/Updated_Data.csv").then(_date => {
 
     );
     ytScatterPlot = new YTScatterPlot(
-        
+        {parentElement: '#youtube-views-and-likes-to-metrics'}, data, colorScale
     )
+    YTScatterPlot.updateVis();
 });
