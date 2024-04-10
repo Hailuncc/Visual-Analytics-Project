@@ -1,4 +1,4 @@
-body {
+/* body {
     display: grid;
     grid-template-columns: 1fr; 
     grid-template-rows: 1fr 1fr; 
@@ -35,4 +35,4 @@ body {
 
 #spotify-streams-to-metrics, #youtube-views-and-likes-to-metrics, #artist-information-box {
     height: 100%;
-}
+} */

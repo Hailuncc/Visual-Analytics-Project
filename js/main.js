@@ -6,8 +6,9 @@
 */
 
 
-let data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot, ytbarChart
-d3.csv("data/Updated_Data.csv").then(_date => {
+let _data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot, ytbarChart;
+
+d3.csv("data/Updated_Data.csv").then((_date) => {
     data = _data;
     const keys = [
         "Danceability",
@@ -43,8 +44,8 @@ d3.csv("data/Updated_Data.csv").then(_date => {
         )
     });
     
+    console.log("Hellow");
 
-    data
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
     spotifyTreeMap = new TreeMap(

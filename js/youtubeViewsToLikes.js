@@ -19,8 +19,9 @@ class YTScatterPlot {
             };
             this.data = _data;
             this.colorScale = _colorScale;
-    
+            
             this.initVis();
+
         }
     
         /**
@@ -29,7 +30,6 @@ class YTScatterPlot {
          */
         initVis() {
             let vis = this;
-    
             // calculate inner chart size; margin specifies the space around the actual chart
             vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
             vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
@@ -71,7 +71,7 @@ class YTScatterPlot {
                 .attr('class', 'axis y-axis');
     
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
-    
+            console.log(vis.Artist)
             // add axis title for Y
             vis.svg.append('text')
                 .attr('class', 'axis-title')
@@ -102,7 +102,8 @@ class YTScatterPlot {
     
             vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
             vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
-            
+
+
             vis.renderVis();
         }
     
