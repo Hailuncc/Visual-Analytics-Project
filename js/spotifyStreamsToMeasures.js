@@ -46,13 +46,15 @@ class SpotifyTreeMap {
             
                   // stratify the data: reformatting for d3.js
             vis.root = d3.stratify()
-            .id(function(d) { return d.Track; })   // Name of the entity (column name is name in csv)
-            .parentId(function(d) { return d.Artist; })   // Name of the parent (column name is parent in csv)
-            
+            .id(d => d.Track)   // Name of the entity (column name is Track in csv)
+            .parentId(d => d.Artist)   // Name of the parent (column name is Artist in csv)
+            (data)
             // vis.root.sum(function(d) { return +d.Energy })   // Compute the numeric value for each entity\
 
             d3.treemap().size([this.width, this.height])
             .padding(4)
+
+            //vis.root.sum(d => d.Energy)
         }
     
 
@@ -69,14 +71,14 @@ class SpotifyTreeMap {
         renderVis() {
             let vis = this;
 
-            vis.svg.selectAll("rect")
-                .data(vis.svg.root.leaves())
-                .join("rect")
-                .attr('x', function(d) {return d.x0})
-                .attr('y', function (d) { return d.y0; })
-                .attr('width', function (d) { return d.x1 - d.x0; })
-                .attr('height', function (d) { return d.y1 - d.y0; })
-                .style("stroke", "black")
-                .style("fill", "#69b3a2");
+            // vis.svg.selectAll("rect")
+            //     .data(vis.svg.root.leaves())
+            //     .join("rect")
+            //     .attr('x', function(d) {return d.x0})
+            //     .attr('y', function (d) { return d.y0; })
+            //     .attr('width', function (d) { return d.x1 - d.x0; })
+            //     .attr('height', function (d) { return d.y1 - d.y0; })
+            //     .style("stroke", "black")
+            //     .style("fill", "#69b3a2");
         }
     }
