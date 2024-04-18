@@ -1,7 +1,3 @@
-d3.csv("data/Updated_Data.csv").then(function(data) {
-    //  Spotify Streams to Metrics Scatter Plot
-});
-
 class SpotifyScatterPlot {
         /** 
          * class constructor with basic chart configuration
@@ -130,7 +126,7 @@ class SpotifyScatterPlot {
                 .call(vis.yAxis)
                 .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
     
-            // add color legends for each city
+            //add color legends for each city
             // vis.chart.selectAll('.legend')
             //     .data(vis.cities)
             //     .join('rect')

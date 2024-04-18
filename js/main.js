@@ -8,12 +8,6 @@
 
 let _data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot, ytBarChart;
 
-// d3.csv("data/Updated_Data.csv", function(data){
-//     console.log(data);
-// }, function(error, rows){
-//     console.log(error);
-// });
-
 d3.csv("data/Updated_Data.csv").then(function(_data) {
     data = _data;
     const keys = [
@@ -56,10 +50,10 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-    spotifyTreeMap = new SpotifyTreeMap(
-        {parentElement: '#spotify-streams-to-measures'}, data, colorScale
-    );
-    spotifyTreeMap.updateVis();
+    // spotifyTreeMap = new SpotifyTreeMap(
+    //     {parentElement: '#spotify-streams-to-measures'}, data, colorScale
+    // );
+    // spotifyTreeMap.updateVis();
 
     spotifyScatterPlot = new SpotifyScatterPlot(
         {parentElement: '#spotify-streams-to-metrics'}, data, colorScale
@@ -75,4 +69,19 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         {parentElement: '#youtube-views-to-likes'}, data, colorScale
     )
     ytScatterPlot.updateVis();
+
+    populateArtistDropdown(data);
+
+    
 });
+
+function populateArtistDropdown(data) {
+    const artistNames = [...new Set(data.map(d => d.Artist))];
+    const select = d3.select('#artist-select');
+    select.selectAll('option')
+        .data(artistNames)
+        .enter()
+        .append('option')
+        .text(d => d)
+        .attr('value', d => d);
+}

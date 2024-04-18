@@ -1,7 +1,3 @@
-// d3.csv("data/Updated_Data.csv").then(function(data) {
-//     // YouTube Views and Likes to Metrics Bar chart
-// });
-
 class BarChart {
     /** 
      * class constructor with basic chart configuration
@@ -122,28 +118,28 @@ class BarChart {
             .attr('fill', d => vis.colorScale(vis.colorValue(d)))
 
             
-            // .on('click', function(event, d) {
-                // basic filter with global variable and function
-                // const isSelected = cityFilter.includes(d.key); // check if current city is selected 
-                // if (isSelected) {
-                //     cityFilter = cityFilter.filter(f => f !== d.key);
-                // } else {
-                //     cityFilter.push(d.key);
-                // }
-                // filterData();
-                // d3.select(this).classed('active', !isSelected);
+            .on('click', function(event, d) {
+                //basic filter with global variable and function
+                //const isSelected = cityFilter.includes(d.key); // check if current city is selected 
+                if (isSelected) {
+                    cityFilter = cityFilter.filter(f => f !== d.key);
+                } else {
+                    cityFilter.push(d.key);
+                }
+                filterData();
+                d3.select(this).classed('active', !isSelected);
 
-            //     const isSelected = d3.select(this).classed('active'); 
-            //     d3.select(this).classed('active', !isSelected);
+                const isSelected = d3.select(this).classed('active'); 
+                d3.select(this).classed('active', !isSelected);
 
-            //     // get the names of all selected cities
-            //     const selectedCities = vis.chart.selectAll('.bar.active')
-            //         .data()
-            //         .map(k => k.key);
+                // get the names of all selected cities
+                const selectedCities = vis.chart.selectAll('.bar.active')
+                    .data()
+                    .map(k => k.key);
                 
-            //     // trigger filter event and pass array with the selected cities
-            //     vis.dispatcher.call('filterCities', event, selectedCities);
-            // });
+                // trigger filter event and pass array with the selected cities
+                vis.dispatcher.call('filterCities', event, selectedCities);
+            });
         
         vis.xAxisG.call(vis.xAxis);
         vis.yAxisG.call(vis.yAxis);
