@@ -1,3 +1,7 @@
+// d3.csv("data/Updated_Data.csv").then(function(data) {
+//     //  Spotify Streams to Metrics Scatter Plot
+// });
+
 class SpotifyTreeMap {
         /** 
          * class constructor with basic chart configuration
@@ -40,11 +44,34 @@ class SpotifyTreeMap {
             vis.chart = vis.svg.append('g')
                 .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
             
-                  // stratify the data: reformatting for d3.js
-            vis.root = d3.stratify()
-            .id(d => d.Track)   // Name of the entity (column name is Track in csv)
-            .parentId(d => d.Artist)   // Name of the parent (column name is Artist in csv)
-            (data)
+
+
+            const treeMapLayout = d3.treemap().size([vis.width, vis.height]).paddingOuter(10)
+            const updatedData = {children: vis.data.map(d => ({value: d.Track}))}
+            const root = d3.hierarchy(updatedData);
+
+            root.sum(function(d) {return +d.Energy});
+            treeMapLayout(root)
+
+            d3.select('svg g')
+                .selectAll('rect')
+                .data(root.descendants())
+                .enter()
+                .append('rect')
+                .attr('x', d => d.x0)
+                .attr('y', d => d.y0)
+                .attr('width', d => d.x1 - d.x0)
+                .attr('height', d => d.y1 - d.y0)
+
+
+
+
+
+            // stratify the data: reformatting for d3.js
+            // vis.root = d3.stratify()
+            // .id(d => d.Track)   // Name of the entity (column name is Track in csv)
+            // .parentId(d => d.Artist)   // Name of the parent (column name is Artist in csv)
+            // (data)
             // vis.root.sum(function(d) { return +d.Energy })   // Compute the numeric value for each entity\
 
             d3.treemap().size([this.width, this.height])

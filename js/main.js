@@ -43,11 +43,15 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         //console.log(d.ratio)
     });
 
-    // data = data.filter(function (d) {
-    //     return(
-    //         d.Artist == "Joyner Lucas" || d.Artist == "Wu-Tang Clan"
-    //     )
-    // });
+    data = data.filter(function (d) {
+        return(
+            d.Artist == "Joyner Lucas" || 
+            d.Artist == "Wu-Tang Clan" ||
+            d.Artist == "BTS" ||
+            d.Artist == "Drake"
+
+        )
+    });
     
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
@@ -111,6 +115,8 @@ function update(selectedGroup) {
           .y(function(d) { return y(+d.n) })
         )
         .attr("stroke", function(d){ return myColor(selectedGroup) })
+
+    select.dispatch('change');
   }
 
 
