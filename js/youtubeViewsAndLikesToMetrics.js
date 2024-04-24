@@ -93,9 +93,13 @@ class BarChart {
         
         let averageRatio = d3.mean(data, d => d.ratio)
         
+        
+
         vis.colorValue = d => d.Track;
         vis.xValue = d => d.Track;
         vis.yValue =  d => d.ratio;
+
+        vis.data.sort((a, b) => d3.descending(vis.yValue(a), vis.yValue(b)));
         
         vis.xScale.domain(vis.data.map(d => d.Track));
         vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
