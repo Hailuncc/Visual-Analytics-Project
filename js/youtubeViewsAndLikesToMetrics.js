@@ -73,6 +73,13 @@ class BarChart {
 
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
     }
+    updateData(filteredData) {
+        // Update the data used for the plot
+        this.data = filteredData;
+
+        // Redraw the plot using the new data
+        this.updateVis();
+    }
 
     /**
      * prepare and update the data and scales before we render the chart

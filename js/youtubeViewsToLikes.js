@@ -10,7 +10,7 @@ class YTScatterPlot {
                 parentElement: _config.parentElement,
                 containerWidth: _config.containerWidth || 600,
                 containerHeight: _config.containerHeight || 500,
-                margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 60},
+                margin: _config.margin || {top: 65, right: 20, bottom: 20, left: 60},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
@@ -85,6 +85,14 @@ class YTScatterPlot {
                 .text('Views');
         }
     
+        updateData(filteredData) {
+            // Update the data used for the plot
+            this.data = filteredData;
+    
+            // Redraw the plot using the new data
+            this.updateVis();
+        }
+
         /**
          * prepare and update the data and scales before we render the chart
          */

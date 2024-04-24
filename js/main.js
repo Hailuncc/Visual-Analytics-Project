@@ -6,7 +6,9 @@
 */
 
 
-let _data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot, ytBarChart;
+let _data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot,
+    ytBarChart, artistNames, artistFilter;
+const dispatcher = d3.dispatch("filterArtist")
 
 d3.csv("data/Updated_Data.csv").then(function(_data) {
     data = _data;
@@ -41,11 +43,11 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         //console.log(d.ratio)
     });
 
-    data = data.filter(function (d) {
-        return(
-            d.Artist == "Joyner Lucas" || d.Artist == "Wu-Tang Clan"
-        )
-    });
+    // data = data.filter(function (d) {
+    //     return(
+    //         d.Artist == "Joyner Lucas" || d.Artist == "Wu-Tang Clan"
+    //     )
+    // });
     
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
@@ -54,6 +56,14 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
     //     {parentElement: '#spotify-streams-to-measures'}, data, colorScale
     // );
     // spotifyTreeMap.updateVis();
+
+
+    // artistFilter = new artistInfo(
+    //     {parentElement: '#artist-select'},
+    //     data,
+    //     dispatcher
+    // )
+
 
     spotifyScatterPlot = new SpotifyScatterPlot(
         {parentElement: '#spotify-streams-to-metrics'}, data, colorScale
@@ -76,7 +86,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 });
 
 function populateArtistDropdown(data) {
-    const artistNames = [...new Set(data.map(d => d.Artist))];
+    artistNames = [...new Set(data.map(d => d.Artist))];
     const select = d3.select('#artist-select');
     select.selectAll('option')
         .data(artistNames)
@@ -85,3 +95,34 @@ function populateArtistDropdown(data) {
         .text(d => d)
         .attr('value', d => d);
 }
+
+function update(selectedGroup) {
+
+    // Create new data with the selection?
+    var dataFilter = data.filter(function(d){return d.name==selectedGroup})
+
+    // Give these new data to update line
+    line
+        .datum(dataFilter)
+        .transition()
+        .duration(1000)
+        .attr("d", d3.line()
+          .x(function(d) { return x(d.year) })
+          .y(function(d) { return y(+d.n) })
+        )
+        .attr("stroke", function(d){ return myColor(selectedGroup) })
+  }
+
+
+d3.select('#artist-select').on('change', function() {
+    // Get the selected artist from the dropdown
+    const selectedArtist = d3.select(this).property('value');
+    
+    // Filter the data to include only entries for the selected artist
+    const filteredData = data.filter(d => d.Artist === selectedArtist);
+    
+    // Update the SpotifyScatterPlot with the filtered data
+    spotifyScatterPlot.updateData(filteredData);
+    ytBarChart.updateData(filteredData);
+    ytScatterPlot.updateData(filteredData);
+});

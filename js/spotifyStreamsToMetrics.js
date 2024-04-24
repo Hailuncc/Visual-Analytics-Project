@@ -84,6 +84,14 @@ class SpotifyScatterPlot {
                 .style('text-anchor', 'end')
                 .text('Stream');
         }
+
+        updateData(filteredData) {
+            // Update the data used for the plot
+            this.data = filteredData;
+    
+            // Redraw the plot using the new data
+            this.updateVis();
+        }
     
         /**
          * prepare and update the data and scales before we render the chart
