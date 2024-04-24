@@ -98,6 +98,13 @@ function populateArtistDropdown(data) {
         .append('option')
         .text(d => d)
         .attr('value', d => d);
+
+
+    // Set the initial dropdown selection to the first artist in the list
+    select.property('value', artistNames[0]);
+
+    // Trigger a change event to automatically filter for the first artist
+    select.dispatch('change');
 }
 
 function update(selectedGroup) {

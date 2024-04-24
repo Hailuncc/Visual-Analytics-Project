@@ -11,7 +11,7 @@ class BarChart {
             parentElement: _config.parentElement,
             containerWidth: _config.containerWidth || 560,
             containerHeight: _config.containerHeight || 500,
-            margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 40},
+            margin: _config.margin || {top: 25, right: 20, bottom: 80, left: 40},
         };
         this.data = _data;
         this.colorScale = _colorScale;
@@ -93,11 +93,11 @@ class BarChart {
         
         let averageRatio = d3.mean(data, d => d.ratio)
         
-        vis.colorValue = d => d.Artist;
-        vis.xValue = d => d.Artist;
+        vis.colorValue = d => d.Track;
+        vis.xValue = d => d.Track;
         vis.yValue =  d => d.ratio;
         
-        vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
+        vis.xScale.domain(vis.data.map(d => d.Track));
         vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
 
         vis.renderVis();
@@ -149,6 +149,13 @@ class BarChart {
             });
         
         vis.xAxisG.call(vis.xAxis);
+
+        vis.xAxisG.selectAll('text')
+        .attr('transform', 'rotate(90)')
+        .attr('x', 10)
+        .attr('y', -5)
+        .style('text-anchor', 'start');
+
         vis.yAxisG.call(vis.yAxis);
     }
 }
