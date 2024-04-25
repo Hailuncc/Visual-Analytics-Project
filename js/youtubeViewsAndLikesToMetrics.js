@@ -113,7 +113,16 @@ class BarChart {
     renderVis() {
         let vis = this;
 
-        
+        //tooltip box
+        const tooltip = d3.select(vis.config.parentElement).append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0)
+            .style('background', 'white')
+            .style('border', 'solid 1px black')
+            .style('padding', '5px')
+            .style('position', 'absolute')
+            .style('pointer-events', 'none');
+
         // add bars
         const bars = vis.chart.selectAll('.bar')
             .data(vis.data)
@@ -127,6 +136,25 @@ class BarChart {
             .attr('width', vis.xScale.bandwidth())
             .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
             .attr('fill', d => vis.colorScale(vis.colorValue(d)))
+
+            
+            .on('mouseover', function(event, d) {
+                d3.selectAll('.bar').style('opacity', 0.2);
+                d3.select(this).style('opacity', 1).style('stroke', 'black');
+                tooltip.transition().duration(200).style('opacity', 1);
+                tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
+                    .style('left', (event.pageX + 10) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+                highlightSong(d.Track);
+            })
+            .on('mouseout', function() {
+                d3.selectAll('.bar').style('opacity', 1).style('stroke', 'none');
+                tooltip.transition().duration(500).style('opacity', 0);
+                resetHighlight();
+            })
+            .on('click', function(_, d) {
+                highlightSong(d.Track);
+            })
 
             
             .on('click', function(event, d) {

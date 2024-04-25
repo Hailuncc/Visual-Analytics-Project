@@ -116,15 +116,44 @@ class SpotifyScatterPlot {
         renderVis() {
             let vis = this;
             // add cicrles
+
+            // tooltip box
+            const tooltip = d3.select(vis.config.parentElement).append('div')
+                .attr('class', 'tooltip')
+                .style('opacity', 0)
+                .style('background', 'white')
+                .style('border', 'solid 1px black')
+                .style('padding', '5px')
+                .style('position', 'absolute')
+                .style('pointer-events', 'none');
+
             const bubbles = vis.chart
                 .selectAll('.point')
                 .data(vis.data)
                 .join('circle')
                 .attr('class', 'point')
-                .attr('r', 4)
+                .attr('r', 10)
                 .attr('cx', d => vis.xScale(vis.xValue(d)))
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
-                .attr('fill', d => vis.colorScale(vis.colorValue(d)));
+                .attr('fill', d => vis.colorScale(vis.colorValue(d)))
+                .on('mouseover', function(event, d) {
+                    d3.selectAll('.point').style('opacity', 0.2);
+                    d3.select(this).style('opacity', 1).style('stroke', 'black');
+                    tooltip.transition().duration(200).style('opacity', 1);
+                    //tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>${vis.config.yAttribute}: ${vis.yValue(d)}`)
+                    tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
+                        .style('left', (event.pageX + 10) + 'px')
+                        .style('top', (event.pageY - 10) + 'px');
+                    highlightSong(d.Track);
+                })
+                .on('mouseout', function() {
+                    d3.selectAll('.point').style('opacity', 1).style('stroke', 'none');
+                    tooltip.transition().duration(500).style('opacity', 0);
+                    resetHighlight();
+                })
+                .on('click', function(_, d) {
+                    highlightSong(d.Track);
+                });
         
             vis.xAxisG
                 .call(vis.xAxis)
@@ -133,7 +162,7 @@ class SpotifyScatterPlot {
             vis.yAxisG
                 .call(vis.yAxis)
                 .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
-    
+            
             //add color legends for each city
             // vis.chart.selectAll('.legend')
             //     .data(vis.cities)
