@@ -101,8 +101,9 @@ class BarChart {
 
         vis.data.sort((a, b) => d3.descending(vis.yValue(a), vis.yValue(b)));
         
-        vis.xScale.domain(vis.data.map(d => d.Track));
+        vis.xScale.domain(vis.data.map(vis.xValue));
         vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
+        vis.xScale.paddingInner(0.1).paddingOuter(0.1);
 
         vis.renderVis();
     }
