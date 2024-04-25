@@ -86,10 +86,6 @@ class BarChart {
     */
     updateVis() {
         let vis = this;
-        // prepare data: count number of rents in each city
-        // i.e. [{ key: 'city1', count: 10 }, {key: 'city2', count: 30}, ...
-        // const artistInfo = d3.rollups(vis.data, v => v.Likes, d => d.Artist);
-        // vis.aggregatedData = Array.from(artistInfo, ([key, count]) => ({key, count}));
         
         let averageRatio = d3.mean(data, d => d.ratio)
         

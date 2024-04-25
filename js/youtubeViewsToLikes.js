@@ -161,29 +161,5 @@ class YTScatterPlot {
             vis.yAxisG
                 .call(vis.yAxis)
                 .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
-    
-            // add color legends for each city
-            // vis.chart.selectAll('.legend')
-            //     .data(vis.cities)
-            //     .join('rect')
-            //     .attr('class', 'legend')
-            //     .attr('width', '12px')
-            //     .attr('height', '12px')
-            //     .attr('fill', d => vis.colorScale(d))
-            //     .attr('x', (d, i) => i * 90)
-            //     .attr('y', -25);
-    
-            // vis.chart.selectAll('.legend-text')
-            //     .data(vis.cities)
-            //     .join('text')
-            //     .attr('class', 'legend-text')
-            //     .attr('x', (d, i) => 15 + i * 90)
-            //     .attr('y', -18)
-            //     .style('fill', 'black')
-            //     .attr('text-anchor', 'left')
-            //     .style('alignment-baseline', 'middle')
-            //     .style('font-size', '11px')
-            //     .text(d => d);
-                
         }
     }

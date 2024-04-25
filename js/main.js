@@ -6,7 +6,7 @@
 */
 
 
-let _data, spotifyTreemap, spotifyScatterPlot, ytScatterPlot,
+let _data, spotifyBubbleChart, spotifyScatterPlot, ytScatterPlot,
     ytBarChart, artistNames, artistFilter;
 const dispatcher = d3.dispatch("filterArtist")
 
@@ -56,10 +56,10 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
 
-    // spotifyTreeMap = new SpotifyTreeMap(
+    // spotifyBubbleChart = new SpotifyBubbleChart(
     //     {parentElement: '#spotify-streams-to-measures'}, data, colorScale
     // );
-    // spotifyTreeMap.updateVis();
+    // spotifyBubbleChart.updateVis();
 
 
     // artistFilter = new artistInfo(
