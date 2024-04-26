@@ -140,19 +140,3 @@ d3.select('#artist-select').on('change', function() {
     ytScatterPlot.updateData(filteredData);
 });
 
-
-function highlightSong(songName) {
-    // Highlight same song name and reduce opacity of others
-    d3.selectAll('.point, .bar').style('opacity', function(d) {
-        return d.Track === songName ? 1.0 : 0.2;
-    });
-    d3.selectAll('.point, .bar').style('stroke', function(d) {
-        return d.Track === songName ? 'black' : 'none';
-    });
-}
-
-function resetHighlight() {
-    // Reset all elements to full opacity and remove strokes
-    d3.selectAll('.point, .bar').style('opacity', 1);
-    d3.selectAll('.point, .bar').style('stroke', 'none');
-}

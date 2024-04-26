@@ -122,10 +122,12 @@ class SpotifyScatterPlot {
          */
         renderVis() {
             let vis = this;
+            this.selectedClass = 'selected';
+
             // add cicrles
 
             // tooltip box
-            const tooltip = d3.select(vis.config.parentElement).append('div')
+            this.tooltip = d3.select(vis.config.parentElement).append('div')
                 .attr('class', 'tooltip')
                 .style('opacity', 0)
                 .style('background', 'white')
@@ -146,21 +148,19 @@ class SpotifyScatterPlot {
                 .on('mouseover', function(event, d) {
                     d3.selectAll('.bubbles').style('opacity', 0.2);
                     d3.select(this).style('opacity', 1).style('stroke', 'black');
-                    tooltip.transition().duration(200).style('opacity', 1);
-                    //tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>${vis.config.yAttribute}: ${vis.yValue(d)}`)
-                    tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
+                    vis.tooltip.transition().duration(200).style('opacity', 1);
+                    vis.tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
                     highlightSong(d.Track);
                 })
                 .on('mouseout', function() {
-                    d3.selectAll('.point').style('opacity', 1).style('stroke', 'none');
-                    tooltip.transition().duration(500).style('opacity', 0);
+                    d3.selectAll('.bubbles').style('opacity', 1).style('stroke', 'none');
+                    vis.tooltip.transition().duration(500).style('opacity', 0);
                     resetHighlight();
-                })
-                .on('click', function(_, d) {
-                    highlightSong(d.Track);
                 });
+                
+                
         
             vis.xAxisG
                 .call(vis.xAxis)

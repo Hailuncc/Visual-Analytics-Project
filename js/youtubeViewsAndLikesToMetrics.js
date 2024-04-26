@@ -109,9 +109,10 @@ class BarChart {
      */
     renderVis() {
         let vis = this;
+        this.selectedClass = 'selected';
 
         //tooltip box
-        const tooltip = d3.select(vis.config.parentElement).append('div')
+        this.tooltip = d3.select(vis.config.parentElement).append('div')
             .attr('class', 'tooltip')
             .style('opacity', 0)
             .style('background', 'white')
@@ -138,20 +139,20 @@ class BarChart {
             .on('mouseover', function(event, d) {
                 d3.selectAll('.bar').style('opacity', 0.2);
                 d3.select(this).style('opacity', 1).style('stroke', 'black');
-                tooltip.transition().duration(200).style('opacity', 1);
-                tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
+                vis.tooltip.transition().duration(200).style('opacity', 1);
+                vis.tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
                     .style('left', (event.pageX + 10) + 'px')
                     .style('top', (event.pageY - 10) + 'px');
                 highlightSong(d.Track);
             })
             .on('mouseout', function() {
                 d3.selectAll('.bar').style('opacity', 1).style('stroke', 'none');
-                tooltip.transition().duration(500).style('opacity', 0);
+                vis.tooltip.transition().duration(500).style('opacity', 0);
                 resetHighlight();
             })
-            .on('click', function(_, d) {
-                highlightSong(d.Track);
-            })
+            
+
+            
 
             
             .on('click', function(event, d) {
