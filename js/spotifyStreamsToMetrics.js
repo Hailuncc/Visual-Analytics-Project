@@ -8,7 +8,7 @@ class SpotifyScatterPlot {
         constructor(_config, _data, _colorScale) {
             this.config = {
                 parentElement: _config.parentElement,
-                containerWidth: _config.containerWidth || 600,
+                containerWidth: _config.containerWidth || 950,
                 containerHeight: _config.containerHeight || 500,
                 margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 60},
                 tooltipPadding: _config.tooltipPadding || 15
@@ -56,6 +56,7 @@ class SpotifyScatterPlot {
                 .tickSize(-vis.width - 10)
                 .tickPadding(10);
     
+
             // append empty x-axis group and move it to the bottom of the chart
             vis.xAxisG = vis.chart.append('g')
                 .attr('class', 'axis x-axis')
@@ -82,7 +83,7 @@ class SpotifyScatterPlot {
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
-                .text('Stream');
+                .text('Energy');
         }
 
         updateData(filteredData) {
@@ -100,8 +101,14 @@ class SpotifyScatterPlot {
             let vis = this;
     
             vis.colorValue = d => d.Track;
-            vis.xValue = d => d.Stream;
+            vis.xValue = d => d.Energy;
             vis.yValue = d => d.Danceability;
+            vis.zValue = d => d.Stream;
+
+            
+            vis.zScale = d3.scaleLog()
+            .domain([d3.min(vis.data, vis.zValue) - d3.min(vis.data, vis.zValue)/2, d3.max(vis.data, vis.zValue)/1.5])
+                .range([0, 30])
             
             vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
             vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
@@ -128,16 +135,16 @@ class SpotifyScatterPlot {
                 .style('pointer-events', 'none');
 
             const bubbles = vis.chart
-                .selectAll('.point')
+                .selectAll('.bubbles')
                 .data(vis.data)
                 .join('circle')
-                .attr('class', 'point')
-                .attr('r', 10)
+                .attr('class', 'bubbles')
+                .attr('r', d => vis.zScale(vis.zValue(d)))
                 .attr('cx', d => vis.xScale(vis.xValue(d)))
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
                 .on('mouseover', function(event, d) {
-                    d3.selectAll('.point').style('opacity', 0.2);
+                    d3.selectAll('.bubbles').style('opacity', 0.2);
                     d3.select(this).style('opacity', 1).style('stroke', 'black');
                     tooltip.transition().duration(200).style('opacity', 1);
                     //tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>${vis.config.yAttribute}: ${vis.yValue(d)}`)

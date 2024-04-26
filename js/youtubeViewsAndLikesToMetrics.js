@@ -9,7 +9,7 @@ class BarChart {
     constructor(_config, _data, _colorScale, _dispatcher) {
         this.config = {
             parentElement: _config.parentElement,
-            containerWidth: _config.containerWidth || 560,
+            containerWidth: _config.containerWidth || 1200,
             containerHeight: _config.containerHeight || 500,
             margin: _config.margin || {top: 25, right: 20, bottom: 80, left: 40},
         };
