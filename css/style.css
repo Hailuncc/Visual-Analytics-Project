@@ -1,42 +1,40 @@
 body {
-    display: grid;
-    grid-template-columns: 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    grid-gap: 20px;
+    font-family: Arial, sans-serif;
     margin: 0;
-    height: 100vh;
-    box-sizing: border-box;
     padding: 20px;
+    background-color: #f4f4f4;
 }
 
-#spotify-streams-to-measures, #youtube-views-to-likes, #spotify-streams-to-metrics,
-#youtube-views-and-likes-to-metrics, #artist-information-box {
-    border: 2px solid black; 
-    margin: 10px;
-    padding: 10px;
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+    height: 100vh;
+}
+
+.upper-half, .lower-half {
+    display: grid;
+    grid-gap: 20px;
 }
 
 .upper-half {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
-    margin-bottom: 40px; 
-}
-
-#spotify-streams-to-measures, #youtube-views-to-likes {
-    height: 100%;
+    grid-template-columns: 2fr 1fr;
 }
 
 .lower-half {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-#spotify-streams-to-metrics, #youtube-views-and-likes-to-metrics, \\ {
-    height: 100%;
+#spotify-streams-to-metrics, #youtube-views-to-likes, #youtube-views-and-likes-to-metrics {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-#artist-information-box{
-    height: 100%;
-    width: 125px;
+
+.artist-information-box, .axis-controls {
+    background: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
