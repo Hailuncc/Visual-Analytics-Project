@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #121212; 
+    color: #b3b3b3; 
 }
 
 .container {
@@ -26,15 +27,101 @@ body {
 }
 
 #spotify-streams-to-metrics, #youtube-views-to-likes, #youtube-views-and-likes-to-metrics {
-    background: white;
-    border: 1px solid #ccc;
+    background: 	#212121; 
+    border: 1px solid #535353; 
     padding: 10px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.artist-information-box {
+    background: #212121;
+    padding: 20px;
+    border: 1px solid #535353;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
 }
 
-.artist-information-box, .axis-controls {
-    background: white;
-    padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.artist-information-box h2 {
+    color: #fff;
+    margin-bottom: 15px;
 }
+
+.select-wrapper {
+    margin-bottom: 15px;
+}
+
+.select-wrapper label {
+    color: #b3b3b3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.select-wrapper select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #535353;
+    border-radius: 4px;
+    background-color: #212121;
+    color: #b3b3b3;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.axis-controls label {
+    color: #b3b3b3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.axis-controls select {
+    width: calc(50% - 5px); 
+    margin-bottom: 10px;
+    display: inline-block; 
+    vertical-align: top; 
+}
+
+
+.audio-player {
+    color: #b3b3b3;
+    margin-top: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 80px;
+}
+
+.button-group .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #535353;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: #b3b3b3;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button-group .btn:hover {
+    background-color: #1db954;
+}
+
+.progress-container {
+    height: 5px;
+    background-color: #535353;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 100px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 60%;
+    background-color: #1db954;
+    border-radius: 5px;
+}
+
