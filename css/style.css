@@ -42,43 +42,52 @@ body {
 
 .artist-information-box h2 {
     color: #fff;
-    margin-bottom: 15px;
+    margin-bottom: 50px;
 }
 
 .select-wrapper {
-    margin-bottom: 15px;
+  margin-bottom: 20px; /* Add margin-bottom for spacing */
 }
 
 .select-wrapper label {
-    color: #b3b3b3;
-    display: block;
-    margin-bottom: 5px;
+  display: block;
+  margin-bottom: 10px; /* Add margin-bottom for spacing */
 }
 
 .select-wrapper select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #535353;
-    border-radius: 4px;
-    background-color: #212121;
-    color: #b3b3b3;
-    cursor: pointer;
-    font-size: 14px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #535353;
+  border-radius: 4px;
+  background-color: #212121;
+  color: #b3b3b3;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.axis-controls {
+  margin-top: 20px; 
 }
 
 .axis-controls label {
-    color: #b3b3b3;
-    display: block;
-    margin-bottom: 5px;
-}
+  display: block;
+  margin-bottom: 10px;
+} 
 
 .axis-controls select {
-    width: calc(50% - 5px); 
-    margin-bottom: 10px;
-    display: inline-block; 
-    vertical-align: top; 
+  width: calc(33.33% - 5px); 
+  margin-right: 10px; 
+  display: inline-block;
+  vertical-align: top;
 }
 
+#y-axis-container {
+  margin-top: 20px; 
+}
+
+#y-axis-select {
+  margin-top: 0; 
+}
 
 .audio-player {
     color: #b3b3b3;
@@ -88,13 +97,13 @@ body {
 .button-group {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-top: 80px;
+    gap: 50px;
+    margin-top: 60px; /* Adjust margin-top for alignment */
 }
 
 .button-group .btn {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background-color: #535353;
     display: flex;
@@ -115,7 +124,7 @@ body {
     background-color: #535353;
     border-radius: 5px;
     width: 100%;
-    margin-top: 100px;
+    margin-top: 80px; /* Adjust margin-top for alignment */
 }
 
 .progress-bar {
@@ -124,4 +133,11 @@ body {
     background-color: #1db954;
     border-radius: 5px;
 }
+
+.time-stamp {
+    margin-top: 10px;
+    color: #b3b3b3;
+    font-size: 14px;
+}
+
 

@@ -69,7 +69,8 @@ class BarChart {
             .attr('x', 0)
             .attr('y', 0)
             .attr('dy', '0.71em')
-            .text('Likes-Views Ratio');
+            .text('Likes-Views Ratio')
+            .style('fill', 'white');
 
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
     }

@@ -74,6 +74,7 @@ class YTScatterPlot {
                 .attr('x', 0)
                 .attr('y', 25)
                 .attr('dy', '0.71em')
+                .style('fill', 'white')
                 .text('Likes');
     
             // add axis title for X
@@ -83,6 +84,7 @@ class YTScatterPlot {
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
+                .style('fill', 'white')
                 .text('Views');
         }
     

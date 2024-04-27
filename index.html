@@ -35,20 +35,23 @@
                             <option value="Likes">Likes</option>
                         </select>
                 
-                        <label for="y-axis-select">Y-axis:</label>
-                        <select id="y-axis-select">
-                            <option value="Danceability">Danceability</option>
-                            <option value="Energy">Energy</option>
-                            <option value="Loudness">Loudness</option>
-                            <option value="Speechiness">Speechiness</option>
-                            <option value="Acousticness">Acousticness</option>
-                            <option value="Instrumentalness">Instrumentalness</option>
-                            <option value="Liveness">Liveness</option>
-                            <option value="Valence">Valence</option>
-                            <option value="Tempo">Tempo</option>
-                            <option value="Views">Views</option>
-                            <option value="Likes">Likes</option>
-                        </select>
+                        
+                        <div id="y-axis-container">
+                            <label for="y-axis-select">Y-axis:</label>
+                            <select id="y-axis-select">
+                                <option value="Danceability">Danceability</option>
+                                <option value="Energy">Energy</option>
+                                <option value="Loudness">Loudness</option>
+                                <option value="Speechiness">Speechiness</option>
+                                <option value="Acousticness">Acousticness</option>
+                                <option value="Instrumentalness">Instrumentalness</option>
+                                <option value="Liveness">Liveness</option>
+                                <option value="Valence">Valence</option>
+                                <option value="Tempo">Tempo</option>
+                                <option value="Views">Views</option>
+                                <option value="Likes">Likes</option>
+                            </select>
+                        </div>                    
                     </div>
                 </div>
             
@@ -61,8 +64,11 @@
                         <button class="btn"><i class="fas fa-step-forward"></i></button>
                     </div>
                     <div class="progress-container">
-                        <div class="progress-bar"></div>
+                        <div class="progress-bar">
+                            <div class="progress-circle"></div> 
+                        </div>
                     </div>
+                    <div class="time-stamp">2:38</div>
                 </div>
             </div>
             
@@ -100,6 +106,10 @@
             allowClear: true
         });
     });
+
+
+
+
 </script>
 
 </html>

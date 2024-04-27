@@ -75,7 +75,8 @@ class SpotifyScatterPlot {
                 .attr('x', 0)
                 .attr('y', 25)
                 .attr('dy', '0.71em')
-                .text('Danceability');
+                .text('Danceability')
+                .style('fill', 'white');
     
             // add axis title for X
             vis.chart.append('text')
@@ -84,7 +85,8 @@ class SpotifyScatterPlot {
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
-                .text('Energy');
+                .text('Energy')
+                .style('fill', 'white');
         }
 
         updateData(filteredData) {
