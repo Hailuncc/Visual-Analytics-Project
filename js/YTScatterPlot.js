@@ -146,7 +146,7 @@ class YTScatterPlot {
                 .on('mouseout', function() {
                     if (!vis.pinned || vis.pinned.Track !== d.Track) {
                         resetHighlight();
-                    } else {
+                    }
                     vis.tooltip.transition().duration(500).style('opacity', 0);
                 })
                 .on('click', function(event, d) {
