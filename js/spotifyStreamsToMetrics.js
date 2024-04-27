@@ -146,19 +146,17 @@ class SpotifyScatterPlot {
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
                 .on('mouseover', function(event, d) {
-                    d3.selectAll('.bubbles').style('opacity', 0.2);
-                    d3.select(this).style('opacity', 1).style('stroke', 'black');
+                    highlightSong(d.Track); 
                     vis.tooltip.transition().duration(200).style('opacity', 1);
                     vis.tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
-                    highlightSong(d.Track);
                 })
                 .on('mouseout', function() {
-                    d3.selectAll('.bubbles').style('opacity', 1).style('stroke', 'none');
+                    resetHighlight(); // Reset all highlights
                     vis.tooltip.transition().duration(500).style('opacity', 0);
-                    resetHighlight();
                 });
+
                 
                 
         

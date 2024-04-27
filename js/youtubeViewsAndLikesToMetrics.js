@@ -134,21 +134,20 @@ class BarChart {
             .attr('width', vis.xScale.bandwidth())
             .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
             .attr('fill', d => vis.colorScale(vis.colorValue(d)))
-
-            
+            .on('click', function(_, d) {
+                toggleSelection(d.Track);
+                updateVisualizations();
+            })
             .on('mouseover', function(event, d) {
-                d3.selectAll('.bar').style('opacity', 0.2);
-                d3.select(this).style('opacity', 1).style('stroke', 'black');
+                highlightSong(d.Track);
                 vis.tooltip.transition().duration(200).style('opacity', 1);
                 vis.tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
                     .style('left', (event.pageX + 10) + 'px')
                     .style('top', (event.pageY - 10) + 'px');
-                highlightSong(d.Track);
             })
             .on('mouseout', function() {
-                d3.selectAll('.bar').style('opacity', 1).style('stroke', 'none');
+                resetHighlight(); 
                 vis.tooltip.transition().duration(500).style('opacity', 0);
-                resetHighlight();
             })
             
 

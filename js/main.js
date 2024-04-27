@@ -140,3 +140,22 @@ d3.select('#artist-select').on('change', function() {
     ytScatterPlot.updateData(filteredData);
 });
 
+
+function highlightSong(trackName) {
+    d3.selectAll('.point, .bubbles, .bar')
+        .style('opacity', 0.2); 
+    d3.selectAll('.point, .bubbles, .bar')
+        .filter(d => d.Track === trackName)
+        .style('opacity', 1) 
+        .style('stroke', 'black')
+        .style('stroke-width', '2px');
+}
+
+function resetHighlight() {
+    d3.selectAll('.point, .bubbles, .bar')
+        .style('opacity', 1)
+        .style('stroke', 'none')
+        .style('stroke-width', '0px');
+}
+
+
