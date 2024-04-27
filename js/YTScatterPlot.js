@@ -16,6 +16,7 @@ class YTScatterPlot {
             this.data = _data;
             this.colorScale = _colorScale;
             this.initVis();
+            this.pinned = null;
 
         }
     
@@ -136,16 +137,29 @@ class YTScatterPlot {
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
                 .on('mouseover', function(event, d) {
-                    highlightSong(d.Track); 
-                    tooltip.transition().duration(200).style('opacity', 1);
-                    tooltip.html(`Song: ${d.Track}<br>Likes: ${d.Likes}<br>Views: ${d.Views}`)
+                    highlightSong(d.Track);
+                    vis.tooltip.transition().duration(200).style('opacity', 1);
+                    vis.tooltip.html(`Song: ${d.Track}<br>Likes: ${d.Likes}<br>Views: ${d.Views}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
                 })
                 .on('mouseout', function() {
-                    resetHighlight();  // Reset all highlights
-                    tooltip.transition().duration(500).style('opacity', 0);
+                    if (!vis.pinned || vis.pinned.Track !== d.Track) {
+                        resetHighlight();
+                    } else {
+                    vis.tooltip.transition().duration(500).style('opacity', 0);
                 })
+                .on('click', function(event, d) {
+                    if (vis.pinned && vis.pinned.Track === d.Track) {
+                        // Unpin if the same element is clicked again
+                        vis.pinned = null;
+                        resetHighlight();
+                    } else {
+                        // Pin new element
+                        vis.pinned = d;
+                        highlightSong(d.Track, true);
+                    }
+                });
         
             vis.xAxisG
                 .call(vis.xAxis)

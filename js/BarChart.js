@@ -16,7 +16,7 @@ class BarChart {
         this.data = _data;
         this.colorScale = _colorScale;
         this.dispatcher = _dispatcher || null;
-
+        this.pinned = null;
         this.initVis();
     }
     
@@ -134,10 +134,6 @@ class BarChart {
             .attr('width', vis.xScale.bandwidth())
             .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
             .attr('fill', d => vis.colorScale(vis.colorValue(d)))
-            .on('click', function(_, d) {
-                toggleSelection(d.Track);
-                updateVisualizations();
-            })
             .on('mouseover', function(event, d) {
                 highlightSong(d.Track);
                 vis.tooltip.transition().duration(200).style('opacity', 1);
@@ -146,8 +142,21 @@ class BarChart {
                     .style('top', (event.pageY - 10) + 'px');
             })
             .on('mouseout', function() {
-                resetHighlight(); 
+                if (!vis.pinned || vis.pinned.Track !== d.Track) {
+                    resetHighlight();
+                }
                 vis.tooltip.transition().duration(500).style('opacity', 0);
+            })
+            .on('click', function(event, d) {
+                if (vis.pinned && vis.pinned.Track === d.Track) {
+                    // Unpin if the same element is clicked again
+                    vis.pinned = null;
+                    resetHighlight();
+                } else {
+                    // Pin new element
+                    vis.pinned = d;
+                    highlightSong(d.Track, true);
+                }
             })
             
 

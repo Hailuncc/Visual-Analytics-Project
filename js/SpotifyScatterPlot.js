@@ -16,6 +16,7 @@ class SpotifyScatterPlot {
             this.data = _data;
             this.colorScale = _colorScale;
             this.initVis();
+            this.pinned = null;
 
         }
     
@@ -146,16 +147,22 @@ class SpotifyScatterPlot {
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
                 .on('mouseover', function(event, d) {
-                    highlightSong(d.Track); 
+                    highlightSong(d.Track); // Highlight on hover
                     vis.tooltip.transition().duration(200).style('opacity', 1);
                     vis.tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
                 })
                 .on('mouseout', function() {
-                    resetHighlight(); // Reset all highlights
+                    if (!vis.pinned || vis.pinned.Track !== d.Track) {
+                        resetHighlight(); 
+                    }
                     vis.tooltip.transition().duration(500).style('opacity', 0);
+                })
+                .on('click', function(event, d) {
+                    highlightSong(d.Track, true); 
                 });
+        
 
                 
                 
