@@ -137,7 +137,8 @@ class SpotifyScatterPlot {
                 .style('border', 'solid 1px black')
                 .style('padding', '5px')
                 .style('position', 'absolute')
-                .style('pointer-events', 'none');
+                .style('pointer-events', 'none')
+                .style('color', 'black');
 
             const bubbles = vis.chart
                 .selectAll('.bubbles')

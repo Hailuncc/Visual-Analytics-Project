@@ -141,26 +141,21 @@ d3.select('#artist-select').on('change', function() {
 });
 
 
-function highlightSong(trackName, pin = false) {
-    if (pin) {
-        this.pinned = this.data.find(d => d.Track === trackName); 
-    }
-
+function highlightSong(trackName) {
     d3.selectAll('.point, .bubbles, .bar')
-        .style('opacity', d => (this.pinned && d.Track === this.pinned.Track) || d.Track === trackName ? 1 : 0.2)
-        .style('stroke', d => (this.pinned && d.Track === this.pinned.Track) || d.Track === trackName ? 'white' : 'none')
-        .style('stroke-width', d => (this.pinned && d.Track === this.pinned.Track) || d.Track === trackName ? '2px' : '0px');
+        .style('opacity', 0.2); 
+    d3.selectAll('.point, .bubbles, .bar')
+        .filter(d => d.Track === trackName)
+        .style('opacity', 1) 
+        .style('stroke', 'white')
+        .style('stroke-width', '2px');
 }
-
 
 function resetHighlight() {
-    if (!this.pinned) {
-        d3.selectAll('.point, .bubbles, .bar')
-            .style('opacity', 1)
-            .style('stroke', 'none')
-            .style('stroke-width', '0px');
-    }
+    d3.selectAll('.point, .bubbles, .bar')
+        .style('opacity', 1)
+        .style('stroke', 'none')
+        .style('stroke-width', '0px');
 }
-
 
 

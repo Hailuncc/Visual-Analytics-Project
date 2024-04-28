@@ -120,7 +120,8 @@ class BarChart {
             .style('border', 'solid 1px black')
             .style('padding', '5px')
             .style('position', 'absolute')
-            .style('pointer-events', 'none');
+            .style('pointer-events', 'none')
+            .style('color', 'black');
 
         // add bars
         const bars = vis.chart.selectAll('.bar')
