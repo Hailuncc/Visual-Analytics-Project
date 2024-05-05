@@ -9,8 +9,8 @@ class SpotifyScatterPlot {
             this.config = {
                 parentElement: _config.parentElement,
                 containerWidth: _config.containerWidth || 1250,
-                containerHeight: _config.containerHeight || 550,
-                margin: _config.margin || {top: 30, right: 30, bottom: 30, left: 110},
+                containerHeight: _config.containerHeight || 650,
+                margin: _config.margin || {top: 30, right: 30, bottom: 60, left: 110},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
@@ -71,21 +71,19 @@ class SpotifyScatterPlot {
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
             
             // add axis title for Y
-            vis.svg.append('text')
+            vis.chart.append('text')
                 .attr('class', 'y-axis-title')
-                .attr('x', 0)
-                .attr('y', 25)
-                .attr('dy', '0.71em')
+                .attr('transform', `translate(${-vis.config.margin.left * 0.8}, ${vis.height / 2}) rotate(-90)`)
+                .style('text-anchor', 'middle')
                 .text('Danceability')
                 .style('fill', 'white');
-    
+                
             // add axis title for X
             vis.chart.append('text')
                 .attr('class', 'x-axis-title')
-                .attr('x', vis.width + 10)
-                .attr('y', vis.height - 15)
-                .attr('dy', '0.71em')
-                .style('text-anchor', 'end')
+                .attr('x', vis.width / 2)
+                .attr('y', vis.height + vis.config.margin.bottom * 0.8)
+                .style('text-anchor', 'middle')
                 .text('Energy')
                 .style('fill', 'white');
 
@@ -110,8 +108,6 @@ class SpotifyScatterPlot {
         
             // update the x-axis
             this.chart.select('.x-axis-title')
-                .attr('x', this.width)
-                .attr('y', this.height - 15)
                 .text(selectedXAxis);
 
             this.updateVis();
@@ -129,8 +125,6 @@ class SpotifyScatterPlot {
 
             //update the y-axis
             this.chart.select('.y-axis-title')
-                .attr('x', this.width)
-                .attr('y', this.height - 15)
                 .text(selectedYAxis);
 
 
