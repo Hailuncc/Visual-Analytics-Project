@@ -19,11 +19,11 @@
                     <label for="artist-select">Choose an artist:</label>
                     <select id="artist-select"></select>
 
-                    <div id="axis-controls">
+                    <div id="x-axis-controls">
                         <label for="x-axis-select">X-axis:</label>
                         <select id="x-axis-select">
                             <option value="Danceability">Danceability</option>
-                            <option value="Energy">Energy</option>
+                            <option value="Energy" selected>Energy</option>
                             <option value="Loudness">Loudness</option>
                             <option value="Speechiness">Speechiness</option>
                             <option value="Acousticness">Acousticness</option>
@@ -100,12 +100,12 @@
 </body>
 
 <script>
-    $(document).ready(function() {
-        $('#artist-select').select2({
-            placeholder: "Select an artist",
-            allowClear: true
-        });
-    });
+    // $(document).ready(function() {
+    //     $('#artist-select').select2({
+    //         placeholder: "Select an artist",
+    //         allowClear: true
+    //     });
+    // });
 
 
 

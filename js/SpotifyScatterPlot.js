@@ -8,16 +8,17 @@ class SpotifyScatterPlot {
         constructor(_config, _data, _colorScale) {
             this.config = {
                 parentElement: _config.parentElement,
-                containerWidth: _config.containerWidth || 950,
-                containerHeight: _config.containerHeight || 500,
-                margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 60},
+                containerWidth: _config.containerWidth || 1250,
+                containerHeight: _config.containerHeight || 550,
+                margin: _config.margin || {top: 30, right: 30, bottom: 30, left: 110},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
             this.colorScale = _colorScale;
             this.initVis();
             this.pinned = null;
-
+            this.selectedYAxis = "Danceability"
+            this.selectedXAxis = "Energy"
         }
     
         /**
@@ -29,7 +30,7 @@ class SpotifyScatterPlot {
             // calculate inner chart size; margin specifies the space around the actual chart
             vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
             vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
-            
+
             // add the svg element and define the size of drawing area 
             vis.svg = d3.select(vis.config.parentElement)
                 .append('svg')
@@ -71,7 +72,7 @@ class SpotifyScatterPlot {
             
             // add axis title for Y
             vis.svg.append('text')
-                .attr('class', 'axis-title')
+                .attr('class', 'y-axis-title')
                 .attr('x', 0)
                 .attr('y', 25)
                 .attr('dy', '0.71em')
@@ -80,13 +81,15 @@ class SpotifyScatterPlot {
     
             // add axis title for X
             vis.chart.append('text')
-                .attr('class', 'axis-title')
+                .attr('class', 'x-axis-title')
                 .attr('x', vis.width + 10)
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
                 .text('Energy')
                 .style('fill', 'white');
+
+                vis.xValue = d => d.Energy;
         }
 
         updateData(filteredData) {
@@ -94,6 +97,43 @@ class SpotifyScatterPlot {
             this.data = filteredData;
     
             // Redraw the plot using the new data
+            this.updateVis();
+        }
+
+        //update the xValue used in this example
+        updateXAxis(selectedXAxis) {
+            this.selectedXAxis = selectedXAxis
+            this.xValue = d => d[selectedXAxis];
+        
+            // Update the x-axis scale domain based on the new data
+            this.xScale.domain(d3.extent(this.data, this.xValue));
+        
+            // update the x-axis
+            this.chart.select('.x-axis-title')
+                .attr('x', this.width)
+                .attr('y', this.height - 15)
+                .text(selectedXAxis);
+
+            this.updateVis();
+        }
+
+
+        //update the xValue used in this example
+        updateYAxis(selectedYAxis) {
+            this.selectedYAxis = selectedYAxis
+            this.yValue = d => d[selectedYAxis];
+        
+            // Update the y-axis scale domain based on the new data
+            this.yScale.domain(d3.extent(this.data, this.yValue));
+        
+
+            //update the y-axis
+            this.chart.select('.y-axis-title')
+                .attr('x', this.width)
+                .attr('y', this.height - 15)
+                .text(selectedYAxis);
+
+
             this.updateVis();
         }
     
@@ -104,8 +144,8 @@ class SpotifyScatterPlot {
             let vis = this;
     
             vis.colorValue = d => d.Track;
-            vis.xValue = d => d.Energy;
-            vis.yValue = d => d.Danceability;
+            vis.xValue ||= d => d.Energy;
+            vis.yValue ||= d => d.Danceability;
             vis.zValue = d => d.Stream;
 
             
@@ -152,7 +192,8 @@ class SpotifyScatterPlot {
                 .on('mouseover', function(event, d) {
                     highlightSong(d.Track); // Highlight on hover
                     vis.tooltip.transition().duration(200).style('opacity', 1);
-                    vis.tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Danceability: ${d.Danceability}`)
+                    vis.tooltip.html(`Song: ${d.Track}<br>Streams: ${d.Stream}<br>Y-Axis - ${vis.selectedYAxis}: ${vis.yValue(d)}
+                    <br>X-Axis - ${vis.selectedXAxis}: ${vis.xValue(d)}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
                 })

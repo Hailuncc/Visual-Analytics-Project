@@ -140,6 +140,16 @@ d3.select('#artist-select').on('change', function() {
     ytScatterPlot.updateData(filteredData);
 });
 
+d3.select('#x-axis-select').on('change', function(){
+    const selectedXAxis = d3.select(this).property('value')
+    spotifyScatterPlot.updateXAxis(selectedXAxis);
+})
+
+d3.select('#y-axis-select').on('change', function(){
+    const selectedYAxis = d3.select(this).property('value')
+    spotifyScatterPlot.updateYAxis(selectedYAxis);
+})
+
 
 function highlightSong(trackName) {
     d3.selectAll('.point, .bubbles, .bar')
