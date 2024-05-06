@@ -91,6 +91,8 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 
 function populateArtistDropdown(data) {
     artistNames = [...new Set(data.map(d => d.Artist))];
+    artistNames.sort();
+    
     const select = d3.select('#artist-select');
     select.selectAll('option')
         .data(artistNames)
