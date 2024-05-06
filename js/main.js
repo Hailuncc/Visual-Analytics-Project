@@ -43,30 +43,41 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         //console.log(d.ratio)
     });
 
-    //filter for certain restaints
-    data = data.filter(function(d){
+    // Check if any column is empty
+    data = data.filter(function(d) {
         return (
-            d.Stream > 0 ||
-            d.Views > 0
-        )
-    })
+            d.Danceability != null && d.Danceability !== '' &&
+            d.Energy != null && d.Energy !== '' &&
+            d.Loudness != null && d.Loudness !== '' &&
+            d.Speechiness != null && d.Speechiness !== '' &&
+            d.Acousticness != null && d.Acousticness !== '' &&
+            d.Instrumentalness != null && d.Instrumentalness !== '' &&
+            d.Liveness != null && d.Liveness !== '' &&
+            d.Valence != null && d.Valence !== '' &&
+            d.Tempo != null && d.Tempo !== '' &&
+            d.Views != null && d.Views !== '' &&
+            d.Likes != null && d.Likes !== '' &&
+            d.Stream != null && d.Stream !== '' && d.Stream > 0 &&
+            !isNaN(d.ratio)
+        );
+    });
 
 
     // temp filter for certain artist
     
-    // data = data.filter(function (d) {
-    //     return(
-    //         d.Artist == "Joyner Lucas" || 
-    //         d.Artist == "Wu-Tang Clan" ||
-    //         d.Artist == "BTS" ||
-    //         d.Artist == "Eminem" ||
-    //         d.Artist == "Lil Uzi Vert" ||
-    //         d.Artist == "$uicideboy$" ||
-    //         d.Artist == "Nicky Jam" ||
-    //         d.Artist == "La Oreja de Van Gogh"
+    data = data.filter(function (d) {
+        return(
+            d.Artist == "Joyner Lucas" || 
+            d.Artist == "Wu-Tang Clan" ||
+            d.Artist == "D.O.E." ||
+            d.Artist == "W&W" ||
+            d.Artist == "Lil Uzi Vert" ||
+            d.Artist == "$uicideboy$" ||
+            d.Artist == "Nicky Jam" ||
+            d.Artist == "La Oreja de Van Gogh"
 
-    //     )
-    // });
+        )
+    });
     
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);

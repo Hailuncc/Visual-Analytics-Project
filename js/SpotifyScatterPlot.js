@@ -102,11 +102,11 @@ class SpotifyScatterPlot {
         updateXAxis(selectedXAxis) {
             this.selectedXAxis = selectedXAxis
             this.xValue = d => d[selectedXAxis];
-        
-            // Update the x-axis scale domain based on the new data
+            
+            // Update x-axis scale domain based on the new data
             this.xScale.domain(d3.extent(this.data, this.xValue));
         
-            // update the x-axis
+            // update x-axis
             this.chart.select('.x-axis-title')
                 .text(selectedXAxis);
 
@@ -118,8 +118,8 @@ class SpotifyScatterPlot {
         updateYAxis(selectedYAxis) {
             this.selectedYAxis = selectedYAxis
             this.yValue = d => d[selectedYAxis];
-        
-            // Update the y-axis scale domain based on the new data
+            console.log(this.selectedYAxis)
+            // Update y-axis scale domain based on the new data
             this.yScale.domain(d3.extent(this.data, this.yValue));
         
 
@@ -146,9 +146,24 @@ class SpotifyScatterPlot {
             vis.zScale = d3.scaleLog()
             .domain([d3.min(vis.data, vis.zValue) - d3.min(vis.data, vis.zValue)/2, d3.max(vis.data, vis.zValue)/1.5])
                 .range([0, 30])
+            console.log()
+
+            //sort by z-size so smaller bubbles will show up on top of larger ones
+            vis.data.sort((a, b) => d3.descending(vis.zValue(a), vis.zValue(b)));
+            //change the scale specically for loudness because it is negative
+            if(this.selectedXAxis == "Loudness"){
+                vis.xScale.domain([0, d3.min(vis.data, vis.xValue), ]);
+                
+            } else {
+                vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
+            }
             
-            vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
-            vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
+            if(this.selectedYAxis == "Loudness"){
+                vis.yScale.domain([0, d3.min(vis.data, vis.yValue), ]);
+                
+            } else {
+                vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
+            }
 
 
             vis.renderVis();
@@ -161,7 +176,7 @@ class SpotifyScatterPlot {
             let vis = this;
             this.selectedClass = 'selected';
 
-            // add cicrles
+            
 
             // tooltip box
             this.tooltip = d3.select(vis.config.parentElement).append('div')
@@ -174,6 +189,8 @@ class SpotifyScatterPlot {
                 .style('pointer-events', 'none')
                 .style('color', 'black');
 
+
+            // add cicrles
             const bubbles = vis.chart
                 .selectAll('.bubbles')
                 .data(vis.data)
@@ -202,9 +219,6 @@ class SpotifyScatterPlot {
                 });
         
 
-                
-                
-        
             vis.xAxisG
                 .call(vis.xAxis)
                 .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
