@@ -65,19 +65,19 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 
     // temp filter for certain artist
     
-    data = data.filter(function (d) {
-        return(
-            d.Artist == "Joyner Lucas" || 
-            d.Artist == "Wu-Tang Clan" ||
-            d.Artist == "D.O.E." ||
-            d.Artist == "W&W" ||
-            d.Artist == "Lil Uzi Vert" ||
-            d.Artist == "$uicideboy$" ||
-            d.Artist == "Nicky Jam" ||
-            d.Artist == "La Oreja de Van Gogh"
+    // data = data.filter(function (d) {
+    //     return(
+    //         d.Artist == "Joyner Lucas" || 
+    //         d.Artist == "Wu-Tang Clan" ||
+    //         d.Artist == "D.O.E." ||
+    //         d.Artist == "W&W" ||
+    //         d.Artist == "Lil Uzi Vert" ||
+    //         d.Artist == "$uicideboy$" ||
+    //         d.Artist == "Nicky Jam" ||
+    //         d.Artist == "La Oreja de Van Gogh"
 
-        )
-    });
+    //     )
+    // });
     
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
