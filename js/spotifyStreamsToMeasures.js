@@ -4,6 +4,7 @@ class SpotifyBubbleChart {
          * @param {Object}
          * @param {Array}
          * @param {d3.Scale}
+         * currently not used
         */
         constructor(_config, _data, _colorScale) {
             this.config = {
@@ -65,7 +66,7 @@ class SpotifyBubbleChart {
         updateVis() {
             let vis = this;
     
-            
+            vis.colorValue = d => d.Title;
 
 
             vis.renderVis();
@@ -83,7 +84,8 @@ class SpotifyBubbleChart {
                 .attr("cx", function (d) { return vis.x(d.gdpPercap); } )
                 .attr("cy", function (d) { return vis.y(d.lifeExp); } )
                 .attr("r", function (d) { return vis.z(d.pop); } )
-                .style("fill", "#69b3a2")
+                .attr('fill', d => vis.colorScale(vis.colorValue(d)))
+
                 .style("opacity", "0.7")
                 .attr("stroke", "black")
 

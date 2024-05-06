@@ -137,7 +137,7 @@ class SpotifyScatterPlot {
         updateVis() {
             let vis = this;
     
-            vis.colorValue = d => d.Track;
+            vis.colorValue = d => [d.Track, d.Artist];
             vis.xValue ||= d => d.Energy;
             vis.yValue ||= d => d.Danceability;
             vis.zValue = d => d.Stream;

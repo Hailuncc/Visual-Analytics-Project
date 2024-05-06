@@ -43,30 +43,33 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         //console.log(d.ratio)
     });
 
+    //filter for certain restaints
+    data = data.filter(function(d){
+        return (
+            d.Stream > 0 ||
+            d.Views > 0
+        )
+    })
+
+
+    // temp filter for certain artist
+    
     // data = data.filter(function (d) {
     //     return(
     //         d.Artist == "Joyner Lucas" || 
     //         d.Artist == "Wu-Tang Clan" ||
     //         d.Artist == "BTS" ||
-    //         d.Artist == "Drake"
+    //         d.Artist == "Eminem" ||
+    //         d.Artist == "Lil Uzi Vert" ||
+    //         d.Artist == "$uicideboy$" ||
+    //         d.Artist == "Nicky Jam" ||
+    //         d.Artist == "La Oreja de Van Gogh"
 
     //     )
     // });
     
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
-
-    // spotifyBubbleChart = new SpotifyBubbleChart(
-    //     {parentElement: '#spotify-streams-to-measures'}, data, colorScale
-    // );
-    // spotifyBubbleChart.updateVis();
-
-
-    // artistFilter = new artistInfo(
-    //     {parentElement: '#artist-select'},
-    //     data,
-    //     dispatcher
-    // )
 
 
     spotifyScatterPlot = new SpotifyScatterPlot(
@@ -109,24 +112,20 @@ function populateArtistDropdown(data) {
     select.dispatch('change');
 }
 
-function update(selectedGroup) {
+// function update(selectedGroup) {
 
-    // Create new data with the selection?
-    var dataFilter = data.filter(function(d){return d.name==selectedGroup})
+//     // Create new data with the selection?
+//     var dataFilter = data.filter(function(d){return d.name==selectedGroup})
 
-    // Give these new data to update line
-    line
-        .datum(dataFilter)
-        .transition()
-        .duration(1000)
-        .attr("d", d3.line()
-          .x(function(d) { return x(d.year) })
-          .y(function(d) { return y(+d.n) })
-        )
-        .attr("stroke", function(d){ return myColor(selectedGroup) })
+//     // Give these new data to update line
+//     line
+//         .datum(dataFilter)
+//         .transition()
+//         .duration(1000)
+//         .attr("stroke", function(d){ return myColor(selectedGroup) })
 
-    select.dispatch('change');
-  }
+//     select.dispatch('change');
+//   }
 
 
 d3.select('#artist-select').on('change', function() {

@@ -102,7 +102,7 @@ class YTScatterPlot {
         updateVis() {
             let vis = this;
     
-            vis.colorValue = d => d.Track;
+            vis.colorValue = d => d => [d.Track, d.Artist];
             vis.xValue = d => d.Views;
             vis.yValue = d => d.Likes;
             

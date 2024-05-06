@@ -92,7 +92,7 @@ class BarChart {
         
         
 
-        vis.colorValue = d => d.Track;
+        vis.colorValue = d => d => [d.Track, d.Artist];
         vis.xValue = d => d.Track;
         vis.yValue =  d => d.ratio;
 
