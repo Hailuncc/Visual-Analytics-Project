@@ -38,23 +38,27 @@ body {
     border: 1px solid #535353;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .artist-information-box h2 {
     color: #fff;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 .select-wrapper {
-  margin-bottom: 20px; /* Add margin-bottom for spacing */
+  margin-bottom: 20px; 
+  color: #b3b3b3;
+  width: 100%;
 }
 
 .select-wrapper label {
   display: block;
-  margin-bottom: 10px; /* Add margin-bottom for spacing */
+  margin-bottom: 8px;
 }
 
-.select-wrapper select {
+.select-wrapper select, .select-wrapper input {
   width: 100%;
   padding: 8px;
   border: 1px solid #535353;
@@ -63,6 +67,18 @@ body {
   color: #b3b3b3;
   cursor: pointer;
   font-size: 14px;
+  box-sizing: border-box;
+}
+
+.select-wrapper input[type="number"] {
+  -moz-appearance: textfield; /* Removes increment/decrement arrows */
+}
+
+/* Style for removing the increment/decrement arrows for input type number in Webkit browsers */
+.select-wrapper input[type="number"]::-webkit-outer-spin-button,
+.select-wrapper input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .axis-controls {
@@ -98,7 +114,7 @@ body {
     display: flex;
     justify-content: center;
     gap: 50px;
-    margin-top: 60px; /* Adjust margin-top for alignment */
+    margin-top: 60px; 
 }
 
 .button-group .btn {
@@ -124,7 +140,7 @@ body {
     background-color: #535353;
     border-radius: 5px;
     width: 100%;
-    margin-top: 80px; /* Adjust margin-top for alignment */
+    margin-top: 80px; 
 }
 
 .progress-bar {
