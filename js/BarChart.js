@@ -10,7 +10,7 @@ class BarChart {
         this.config = {
             parentElement: _config.parentElement,
             containerWidth: _config.containerWidth || 1200,
-            containerHeight: _config.containerHeight || 500,
+            containerHeight: _config.containerHeight || 650,
             margin: _config.margin || {top: 25, right: 20, bottom: 80, left: 40},
         };
         this.data = _data;
@@ -92,7 +92,7 @@ class BarChart {
         
         
 
-        vis.colorValue = d => d => [d.Track, d.Artist];
+        vis.colorValue = d => [d.Track, d.Artist];
         vis.xValue = d => d.Track;
         vis.yValue =  d => d.ratio;
 

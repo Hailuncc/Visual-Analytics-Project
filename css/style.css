@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     background-color: #121212; 
     color: #b3b3b3; 
 }
@@ -10,7 +10,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 20px;
-    height: 100vh;
+    
 }
 
 .upper-half, .lower-half {
@@ -23,7 +23,7 @@ body {
 }
 
 .lower-half {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 #spotify-streams-to-metrics, #youtube-views-to-likes, #youtube-views-and-likes-to-metrics {
@@ -97,8 +97,12 @@ body {
   vertical-align: top;
 }
 
+#x-axis-controls {
+  margin-top: 40px; 
+}
+
 #y-axis-container {
-  margin-top: 60px; 
+  margin-top: 40px; 
 }
 
 #y-axis-select {

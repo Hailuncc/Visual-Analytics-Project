@@ -9,7 +9,7 @@ class YTScatterPlot {
             this.config = {
                 parentElement: _config.parentElement,
                 containerWidth: _config.containerWidth || 1200,
-                containerHeight: _config.containerHeight || 500,
+                containerHeight: _config.containerHeight || 650,
                 margin: _config.margin || {top: 65, right: 20, bottom: 20, left: 60},
                 tooltipPadding: _config.tooltipPadding || 15
             };
@@ -49,12 +49,12 @@ class YTScatterPlot {
     
             vis.xAxis = d3.axisBottom(vis.xScale)
                 .ticks(6)
-                .tickSize(-vis.height - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
             vis.yAxis = d3.axisLeft(vis.yScale)
                 .ticks(6)
-                .tickSize(-vis.width - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
             // append empty x-axis group and move it to the bottom of the chart
@@ -102,14 +102,16 @@ class YTScatterPlot {
         updateVis() {
             let vis = this;
     
-            vis.colorValue = d => d => [d.Track, d.Artist];
+            vis.colorValue = d => [d.Track, d.Artist];
             vis.xValue = d => d.Views;
             vis.yValue = d => d.Likes;
+
+            
             
             vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
             vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
 
-
+            
             vis.renderVis();
         }
     
@@ -118,6 +120,7 @@ class YTScatterPlot {
          */
         renderVis() {
             let vis = this;
+            console.log(vis.data);
 
             const tooltip = d3.select(vis.config.parentElement).append('div')
                 .attr('class', 'tooltip')
@@ -153,10 +156,10 @@ class YTScatterPlot {
         
             vis.xAxisG
                 .call(vis.xAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
+
     
             vis.yAxisG
                 .call(vis.yAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
+
         }
     }

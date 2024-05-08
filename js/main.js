@@ -7,7 +7,7 @@
 
 
 let _data, spotifyBubbleChart, spotifyScatterPlot, ytScatterPlot,
-    ytBarChart, artistNames, artistFilter;
+    ytBarChart, artistNames, artistFilter, minStream = 0;
 const dispatcher = d3.dispatch("filterArtist")
 
 d3.csv("data/Updated_Data.csv").then(function(_data) {
@@ -26,6 +26,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         "Likes"
     ];
 
+    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
     //convert string into numbers
     data.forEach((d) =>{
         d.Danceability = parseFloat(d["Danceability"]);
@@ -43,6 +44,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         //console.log(d.ratio)
     });
 
+    
     // Check if any column is empty
     data = data.filter(function(d) {
         return (
@@ -61,26 +63,9 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
             !isNaN(d.ratio)
         );
     });
-
-
-    // temp filter for certain artist
-    
-    // data = data.filter(function (d) {
-    //     return(
-    //         d.Artist == "Joyner Lucas" || 
-    //         d.Artist == "Wu-Tang Clan" ||
-    //         d.Artist == "D.O.E." ||
-    //         d.Artist == "W&W" ||
-    //         d.Artist == "Lil Uzi Vert" ||
-    //         d.Artist == "$uicideboy$" ||
-    //         d.Artist == "Nicky Jam" ||
-    //         d.Artist == "La Oreja de Van Gogh"
-
-    //     )
-    // });
     
 
-    const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+    
 
 
     spotifyScatterPlot = new SpotifyScatterPlot(
@@ -123,20 +108,6 @@ function populateArtistDropdown(data) {
     select.dispatch('change');
 }
 
-// function update(selectedGroup) {
-
-//     // Create new data with the selection?
-//     var dataFilter = data.filter(function(d){return d.name==selectedGroup})
-
-//     // Give these new data to update line
-//     line
-//         .datum(dataFilter)
-//         .transition()
-//         .duration(1000)
-//         .attr("stroke", function(d){ return myColor(selectedGroup) })
-
-//     select.dispatch('change');
-//   }
 
 
 d3.select('#artist-select').on('change', function() {
@@ -163,6 +134,20 @@ d3.select('#y-axis-select').on('change', function(){
 })
 
 
+d3.select('#views-filter').on('change', function() {
+    // Get the value from the input element
+    const filterValue = parseFloat(d3.select(this).property('value'));
+    
+    // Filter the data based on the input value (minimum views)
+    const filteredData = data.filter(d => d.views >= filterValue);
+
+
+    spotifyScatterPlot.updateData(filteredData);
+    ytBarChart.updateData(filteredData);
+    ytScatterPlot.updateData(filteredData);
+})
+
+
 function highlightSong(trackName) {
     d3.selectAll('.point, .bubbles, .bar')
         .style('opacity', 0.2); 
@@ -176,8 +161,8 @@ function highlightSong(trackName) {
 function resetHighlight() {
     d3.selectAll('.point, .bubbles, .bar')
         .style('opacity', 1)
-        .style('stroke', 'none')
-        .style('stroke-width', '0px');
+        .style('stroke', 'Black')
+        .style('stroke-width', '1px');
 }
 
 

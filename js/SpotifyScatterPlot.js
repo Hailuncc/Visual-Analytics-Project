@@ -8,9 +8,9 @@ class SpotifyScatterPlot {
         constructor(_config, _data, _colorScale) {
             this.config = {
                 parentElement: _config.parentElement,
-                containerWidth: _config.containerWidth || 1250,
+                containerWidth: _config.containerWidth || 1550,
                 containerHeight: _config.containerHeight || 650,
-                margin: _config.margin || {top: 30, right: 30, bottom: 60, left: 110},
+                margin: _config.margin || {top: 50, right: 50, bottom: 60, left: 100},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
@@ -50,12 +50,12 @@ class SpotifyScatterPlot {
     
             vis.xAxis = d3.axisBottom(vis.xScale)
                 .ticks(6)
-                .tickSize(-vis.height - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
             vis.yAxis = d3.axisLeft(vis.yScale)
                 .ticks(6)
-                .tickSize(-vis.width - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
 
@@ -148,8 +148,11 @@ class SpotifyScatterPlot {
                 .range([0, 30])
             console.log()
 
-            //sort by z-size so smaller bubbles will show up on top of larger ones
-            vis.data.sort((a, b) => d3.descending(vis.zValue(a), vis.zValue(b)));
+            //sort by z-size so smaller bubbles will show up on top of larger ones but messed up the colors
+            //vis.data.sort((a, b) => d3.descending(vis.zValue(a), vis.zValue(b)));
+
+            console.log(vis.data);
+            
             //change the scale specically for loudness because it is negative
             if(this.selectedXAxis == "Loudness"){
                 vis.xScale.domain([0, d3.min(vis.data, vis.xValue), ]);
@@ -199,6 +202,7 @@ class SpotifyScatterPlot {
                 .attr('r', d => vis.zScale(vis.zValue(d)))
                 .attr('cx', d => vis.xScale(vis.xValue(d)))
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
+                .attr("stroke", "black")
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
                 .on('mouseover', function(event, d) {
                     highlightSong(d.Track); // Highlight on hover
@@ -221,11 +225,9 @@ class SpotifyScatterPlot {
 
             vis.xAxisG
                 .call(vis.xAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
     
             vis.yAxisG
                 .call(vis.yAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
                 
         }
     }
