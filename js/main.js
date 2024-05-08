@@ -41,11 +41,10 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
         d.Likes = +d["Likes"]; //Does not need a float
         d.Stream = +d["Stream"]; //Does not need a float
         d.ratio = d.Likes/d.Views;
-        //console.log(d.ratio)
     });
 
     
-    // Check if any column is empty
+    // Check if any column is empty or null and if they have more than 0 streams or views
     data = data.filter(function(d) {
         return (
             d.Danceability != null && d.Danceability !== '' &&
@@ -57,7 +56,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
             d.Liveness != null && d.Liveness !== '' &&
             d.Valence != null && d.Valence !== '' &&
             d.Tempo != null && d.Tempo !== '' &&
-            d.Views != null && d.Views !== '' &&
+            d.Views != null && d.Views !== '' && d.Views > 0 &&
             d.Likes != null && d.Likes !== '' &&
             d.Stream != null && d.Stream !== '' && d.Stream > 0 &&
             !isNaN(d.ratio)
@@ -67,7 +66,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
 
     
 
-
+    //draw all of the graphs
     spotifyScatterPlot = new SpotifyScatterPlot(
         {parentElement: '#spotify-streams-to-metrics'}, data, colorScale
     );
@@ -88,6 +87,7 @@ d3.csv("data/Updated_Data.csv").then(function(_data) {
     
 });
 
+//function to populate the dropdown for artists
 function populateArtistDropdown(data) {
     artistNames = [...new Set(data.map(d => d.Artist))];
     artistNames.sort();
@@ -109,7 +109,7 @@ function populateArtistDropdown(data) {
 }
 
 
-
+//functino to allow user to choose which artist they want to view
 d3.select('#artist-select').on('change', function() {
     // Get the selected artist from the dropdown
     const selectedArtist = d3.select(this).property('value');
@@ -117,37 +117,26 @@ d3.select('#artist-select').on('change', function() {
     // Filter the data to include only entries for the selected artist
     const filteredData = data.filter(d => d.Artist === selectedArtist);
     
-    // Update the SpotifyScatterPlot with the filtered data
+    //redraw everything
     spotifyScatterPlot.updateData(filteredData);
     ytBarChart.updateData(filteredData);
     ytScatterPlot.updateData(filteredData);
 });
 
+//change the x axis for what the user chooses for their measure
 d3.select('#x-axis-select').on('change', function(){
     const selectedXAxis = d3.select(this).property('value')
     spotifyScatterPlot.updateXAxis(selectedXAxis);
 })
 
+//change the y axis for what the user chooses for their measure
 d3.select('#y-axis-select').on('change', function(){
     const selectedYAxis = d3.select(this).property('value')
     spotifyScatterPlot.updateYAxis(selectedYAxis);
 })
 
 
-d3.select('#views-filter').on('change', function() {
-    // Get the value from the input element
-    const filterValue = parseFloat(d3.select(this).property('value'));
-    
-    // Filter the data based on the input value (minimum views)
-    const filteredData = data.filter(d => d.views >= filterValue);
-
-
-    spotifyScatterPlot.updateData(filteredData);
-    ytBarChart.updateData(filteredData);
-    ytScatterPlot.updateData(filteredData);
-})
-
-
+//function to change the outlines
 function highlightSong(trackName) {
     d3.selectAll('.point, .bubbles, .bar')
         .style('opacity', 0.2); 
@@ -158,6 +147,7 @@ function highlightSong(trackName) {
         .style('stroke-width', '2px');
 }
 
+//function to reset the highlight and redraw the default outlines
 function resetHighlight() {
     d3.selectAll('.point, .bubbles, .bar')
         .style('opacity', 1)

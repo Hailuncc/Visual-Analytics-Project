@@ -1,3 +1,10 @@
+/**
+ * Assignment name: Project Mile Stone
+ * Team 7
+ * Group members: Adam, Albert, Hari, Hasitha
+ * 
+*/
+
 class YTScatterPlot {
         /** 
          * class constructor with basic chart configuration
@@ -87,7 +94,7 @@ class YTScatterPlot {
                 .style('fill', 'white')
                 .text('Views');
         }
-    
+        //update the data for the chosen artist
         updateData(filteredData) {
             // Update the data used for the plot
             this.data = filteredData;
@@ -120,19 +127,20 @@ class YTScatterPlot {
          */
         renderVis() {
             let vis = this;
-            console.log(vis.data);
 
-            const tooltip = d3.select(vis.config.parentElement).append('div')
-                .attr('class', 'tooltip')
-                .style('opacity', 0)
-                .style('background', 'white')
-                .style('border', 'solid 1px black')
-                .style('padding', '5px')
-                .style('position', 'absolute')
-                .style('pointer-events', 'none')
-                .style('color', 'black');
+            const tooltip = d3
+              .select(vis.config.parentElement)
+              .append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0)
+              .style("background", "white")
+              .style("border", "solid 1px black")
+              .style("padding", "5px")
+              .style("position", "absolute")
+              .style("pointer-events", "none")
+              .style("color", "black");
 
-            // add cicrles
+            // add circles
             const bubbles = vis.chart
                 .selectAll('.point')
                 .data(vis.data)
@@ -154,12 +162,9 @@ class YTScatterPlot {
                     tooltip.transition().duration(500).style('opacity', 0);
                 });
         
-            vis.xAxisG
-                .call(vis.xAxis)
-
-    
-            vis.yAxisG
-                .call(vis.yAxis)
+            //draw axis
+            vis.xAxisG.call(vis.xAxis)
+            vis.yAxisG.call(vis.yAxis)
 
         }
     }

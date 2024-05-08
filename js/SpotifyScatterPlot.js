@@ -1,3 +1,10 @@
+/**
+ * Assignment name: Project Mile Stone
+ * Team 7
+ * Group members: Adam, Albert, Hari, Hasitha
+ * 
+*/
+
 class SpotifyScatterPlot {
         /** 
          * class constructor with basic chart configuration
@@ -17,6 +24,7 @@ class SpotifyScatterPlot {
             this.colorScale = _colorScale;
             this.initVis();
             this.pinned = null;
+            //default choices
             this.selectedYAxis = "Danceability"
             this.selectedXAxis = "Energy"
         }
@@ -89,7 +97,7 @@ class SpotifyScatterPlot {
 
                 vis.xValue = d => d.Energy;
         }
-
+        //update the data for the chosen artist
         updateData(filteredData) {
             // Update the data used for the plot
             this.data = filteredData;
@@ -98,7 +106,7 @@ class SpotifyScatterPlot {
             this.updateVis();
         }
 
-        //update the xValue used in this example
+        //update the xAxis for the chosen measure
         updateXAxis(selectedXAxis) {
             this.selectedXAxis = selectedXAxis
             this.xValue = d => d[selectedXAxis];
@@ -114,7 +122,7 @@ class SpotifyScatterPlot {
         }
 
 
-        //update the xValue used in this example
+        //update the yAxis for the chosen measure
         updateYAxis(selectedYAxis) {
             this.selectedYAxis = selectedYAxis
             this.yValue = d => d[selectedYAxis];
@@ -146,12 +154,6 @@ class SpotifyScatterPlot {
             vis.zScale = d3.scaleLog()
             .domain([d3.min(vis.data, vis.zValue) - d3.min(vis.data, vis.zValue)/2, d3.max(vis.data, vis.zValue)/1.5])
                 .range([0, 30])
-            console.log()
-
-            //sort by z-size so smaller bubbles will show up on top of larger ones but messed up the colors
-            //vis.data.sort((a, b) => d3.descending(vis.zValue(a), vis.zValue(b)));
-
-            console.log(vis.data);
             
             //change the scale specically for loudness because it is negative
             if(this.selectedXAxis == "Loudness"){
@@ -193,7 +195,7 @@ class SpotifyScatterPlot {
                 .style('color', 'black');
 
 
-            // add cicrles
+            // add the bubbles
             const bubbles = vis.chart
                 .selectAll('.bubbles')
                 .data(vis.data)
@@ -223,11 +225,9 @@ class SpotifyScatterPlot {
                 });
         
 
-            vis.xAxisG
-                .call(vis.xAxis)
-    
-            vis.yAxisG
-                .call(vis.yAxis)
+            //draw axis
+            vis.xAxisG.call(vis.xAxis);
+            vis.yAxisG.call(vis.yAxis)
                 
         }
     }

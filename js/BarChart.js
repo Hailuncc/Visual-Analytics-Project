@@ -1,3 +1,10 @@
+/**
+ * Assignment name: Project Mile Stone
+ * Team 7
+ * Group members: Adam, Albert, Hari, Hasitha
+ * 
+*/
+
 class BarChart {
     /** 
      * class constructor with basic chart configuration
@@ -74,6 +81,7 @@ class BarChart {
 
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
     }
+    //update the data for the chosen artist
     updateData(filteredData) {
         // Update the data used for the plot
         this.data = filteredData;
@@ -87,10 +95,6 @@ class BarChart {
     */
     updateVis() {
         let vis = this;
-        
-        let averageRatio = d3.mean(data, d => d.ratio)
-        
-        
 
         vis.colorValue = d => [d.Track, d.Artist];
         vis.xValue = d => d.Track;
@@ -188,13 +192,17 @@ class BarChart {
                 vis.dispatcher.call('filterCities', event, selectedCities);
             });
         
+
+        //draw axis
         vis.xAxisG.call(vis.xAxis);
 
-        vis.xAxisG.selectAll('text')
-        .attr('transform', 'rotate(90)')
-        .attr('x', 10)
-        .attr('y', -5)
-        .style('text-anchor', 'start');
+        //rotate and reverse the song names
+        vis.xAxisG
+          .selectAll("text")
+          .attr("transform", "rotate(90)")
+          .attr("x", 10)
+          .attr("y", -5)
+          .style("text-anchor", "start");
 
         vis.yAxisG.call(vis.yAxis);
     }
