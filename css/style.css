@@ -78,10 +78,9 @@ body {
 }
 
 .select-wrapper input[type="number"] {
-  -moz-appearance: textfield; /* Removes increment/decrement arrows */
+  -moz-appearance: textfield; 
 }
 
-/* Style for removing the increment/decrement arrows for input type number in Webkit browsers */
 .select-wrapper input[type="number"]::-webkit-outer-spin-button,
 .select-wrapper input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
