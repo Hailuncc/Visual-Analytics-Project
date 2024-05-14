@@ -1,3 +1,10 @@
+/**
+ * Assignment name: Project Mile Stone
+ * Team 7
+ * Group members: Adam, Albert, Hari, Hasitha
+ * 
+*/
+
 class BarChart {
     /** 
      * class constructor with basic chart configuration
@@ -9,14 +16,14 @@ class BarChart {
     constructor(_config, _data, _colorScale, _dispatcher) {
         this.config = {
             parentElement: _config.parentElement,
-            containerWidth: _config.containerWidth || 560,
-            containerHeight: _config.containerHeight || 500,
+            containerWidth: _config.containerWidth || 1200,
+            containerHeight: _config.containerHeight || 650,
             margin: _config.margin || {top: 25, right: 20, bottom: 80, left: 40},
         };
         this.data = _data;
         this.colorScale = _colorScale;
         this.dispatcher = _dispatcher || null;
-
+        this.pinned = null;
         this.initVis();
     }
     
@@ -69,10 +76,12 @@ class BarChart {
             .attr('x', 0)
             .attr('y', 0)
             .attr('dy', '0.71em')
-            .text('Likes-Views Ratio');
+            .text('Likes-Views Ratio')
+            .style('fill', 'white');
 
             vis.Artist = [...new Set(vis.data.map(d => d.Artist))];
     }
+    //update the data for the chosen artist
     updateData(filteredData) {
         // Update the data used for the plot
         this.data = filteredData;
@@ -86,12 +95,8 @@ class BarChart {
     */
     updateVis() {
         let vis = this;
-        
-        let averageRatio = d3.mean(data, d => d.ratio)
-        
-        
 
-        vis.colorValue = d => d.Track;
+        vis.colorValue = d => [d.Track, d.Artist];
         vis.xValue = d => d.Track;
         vis.yValue =  d => d.ratio;
 
@@ -109,16 +114,18 @@ class BarChart {
      */
     renderVis() {
         let vis = this;
+        this.selectedClass = 'selected';
 
         //tooltip box
-        const tooltip = d3.select(vis.config.parentElement).append('div')
+        this.tooltip = d3.select(vis.config.parentElement).append('div')
             .attr('class', 'tooltip')
             .style('opacity', 0)
             .style('background', 'white')
             .style('border', 'solid 1px black')
             .style('padding', '5px')
             .style('position', 'absolute')
-            .style('pointer-events', 'none');
+            .style('pointer-events', 'none')
+            .style('color', 'black');
 
         // add bars
         const bars = vis.chart.selectAll('.bar')
@@ -133,25 +140,33 @@ class BarChart {
             .attr('width', vis.xScale.bandwidth())
             .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
             .attr('fill', d => vis.colorScale(vis.colorValue(d)))
-
-            
             .on('mouseover', function(event, d) {
-                d3.selectAll('.bar').style('opacity', 0.2);
-                d3.select(this).style('opacity', 1).style('stroke', 'black');
-                tooltip.transition().duration(200).style('opacity', 1);
-                tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
+                highlightSong(d.Track);
+                vis.tooltip.transition().duration(200).style('opacity', 1);
+                vis.tooltip.html(`Song: ${d.Track}<br>Ratio: ${vis.yValue(d).toFixed(2)}`)
                     .style('left', (event.pageX + 10) + 'px')
                     .style('top', (event.pageY - 10) + 'px');
-                highlightSong(d.Track);
             })
             .on('mouseout', function() {
-                d3.selectAll('.bar').style('opacity', 1).style('stroke', 'none');
-                tooltip.transition().duration(500).style('opacity', 0);
-                resetHighlight();
+                if (!vis.pinned || vis.pinned.Track !== d.Track) {
+                    resetHighlight();
+                }
+                vis.tooltip.transition().duration(500).style('opacity', 0);
             })
-            .on('click', function(_, d) {
-                highlightSong(d.Track);
+            .on('click', function(event, d) {
+                if (vis.pinned && vis.pinned.Track === d.Track) {
+                    // Unpin if the same element is clicked again
+                    vis.pinned = null;
+                    resetHighlight();
+                } else {
+                    // Pin new element
+                    vis.pinned = d;
+                    highlightSong(d.Track, true);
+                }
             })
+            
+
+            
 
             
             .on('click', function(event, d) {
@@ -177,13 +192,17 @@ class BarChart {
                 vis.dispatcher.call('filterCities', event, selectedCities);
             });
         
+
+        //draw axis
         vis.xAxisG.call(vis.xAxis);
 
-        vis.xAxisG.selectAll('text')
-        .attr('transform', 'rotate(90)')
-        .attr('x', 10)
-        .attr('y', -5)
-        .style('text-anchor', 'start');
+        //rotate and reverse the song names
+        vis.xAxisG
+          .selectAll("text")
+          .attr("transform", "rotate(90)")
+          .attr("x", 10)
+          .attr("y", -5)
+          .style("text-anchor", "start");
 
         vis.yAxisG.call(vis.yAxis);
     }

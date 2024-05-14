@@ -1,3 +1,10 @@
+/**
+ * Assignment name: Project Mile Stone
+ * Team 7
+ * Group members: Adam, Albert, Hari, Hasitha
+ * 
+*/
+
 class YTScatterPlot {
         /** 
          * class constructor with basic chart configuration
@@ -8,14 +15,15 @@ class YTScatterPlot {
         constructor(_config, _data, _colorScale) {
             this.config = {
                 parentElement: _config.parentElement,
-                containerWidth: _config.containerWidth || 600,
-                containerHeight: _config.containerHeight || 500,
+                containerWidth: _config.containerWidth || 1200,
+                containerHeight: _config.containerHeight || 650,
                 margin: _config.margin || {top: 65, right: 20, bottom: 20, left: 60},
                 tooltipPadding: _config.tooltipPadding || 15
             };
             this.data = _data;
             this.colorScale = _colorScale;
             this.initVis();
+            this.pinned = null;
 
         }
     
@@ -48,12 +56,12 @@ class YTScatterPlot {
     
             vis.xAxis = d3.axisBottom(vis.xScale)
                 .ticks(6)
-                .tickSize(-vis.height - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
             vis.yAxis = d3.axisLeft(vis.yScale)
                 .ticks(6)
-                .tickSize(-vis.width - 10)
+                .tickSize(0)
                 .tickPadding(10);
     
             // append empty x-axis group and move it to the bottom of the chart
@@ -73,6 +81,7 @@ class YTScatterPlot {
                 .attr('x', 0)
                 .attr('y', 25)
                 .attr('dy', '0.71em')
+                .style('fill', 'white')
                 .text('Likes');
     
             // add axis title for X
@@ -82,9 +91,10 @@ class YTScatterPlot {
                 .attr('y', vis.height - 15)
                 .attr('dy', '0.71em')
                 .style('text-anchor', 'end')
+                .style('fill', 'white')
                 .text('Views');
         }
-    
+        //update the data for the chosen artist
         updateData(filteredData) {
             // Update the data used for the plot
             this.data = filteredData;
@@ -99,14 +109,16 @@ class YTScatterPlot {
         updateVis() {
             let vis = this;
     
-            vis.colorValue = d => d.Track;
+            vis.colorValue = d => [d.Track, d.Artist];
             vis.xValue = d => d.Views;
             vis.yValue = d => d.Likes;
+
+            
             
             vis.xScale.domain([0, d3.max(vis.data, vis.xValue)]);
             vis.yScale.domain([0, d3.max(vis.data, vis.yValue)]);
 
-
+            
             vis.renderVis();
         }
     
@@ -116,16 +128,19 @@ class YTScatterPlot {
         renderVis() {
             let vis = this;
 
-            const tooltip = d3.select(vis.config.parentElement).append('div')
-                .attr('class', 'tooltip')
-                .style('opacity', 0)
-                .style('background', 'white')
-                .style('border', 'solid 1px black')
-                .style('padding', '5px')
-                .style('position', 'absolute')
-                .style('pointer-events', 'none');
+            const tooltip = d3
+              .select(vis.config.parentElement)
+              .append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0)
+              .style("background", "white")
+              .style("border", "solid 1px black")
+              .style("padding", "5px")
+              .style("position", "absolute")
+              .style("pointer-events", "none")
+              .style("color", "black");
 
-            // add cicrles
+            // add circles
             const bubbles = vis.chart
                 .selectAll('.point')
                 .data(vis.data)
@@ -135,31 +150,21 @@ class YTScatterPlot {
                 .attr('cx', d => vis.xScale(vis.xValue(d)))
                 .attr('cy', d => vis.yScale(vis.yValue(d)))
                 .attr('fill', d => vis.colorScale(vis.colorValue(d)))
-
                 .on('mouseover', function(event, d) {
-                    d3.selectAll('.point').style('opacity', 0.2);
-                    d3.select(this).style('opacity', 1).style('stroke', 'black');
+                    highlightSong(d.Track); 
                     tooltip.transition().duration(200).style('opacity', 1);
                     tooltip.html(`Song: ${d.Track}<br>Likes: ${d.Likes}<br>Views: ${d.Views}`)
                         .style('left', (event.pageX + 10) + 'px')
                         .style('top', (event.pageY - 10) + 'px');
-                    highlightSong(d.Track);
                 })
                 .on('mouseout', function() {
-                    d3.selectAll('.point').style('opacity', 1).style('stroke', 'none');
+                    resetHighlight();  // Reset all highlights
                     tooltip.transition().duration(500).style('opacity', 0);
-                    resetHighlight();
-                })
-                .on('click', function(_, d) {
-                    highlightSong(d.Track);
                 });
         
-            vis.xAxisG
-                .call(vis.xAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
-    
-            vis.yAxisG
-                .call(vis.yAxis)
-                .call(g => g.select('.domain').remove()); // remove axis and only show the gridline
+            //draw axis
+            vis.xAxisG.call(vis.xAxis)
+            vis.yAxisG.call(vis.yAxis)
+
         }
     }

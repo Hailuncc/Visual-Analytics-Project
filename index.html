@@ -1,3 +1,9 @@
+<!--
+Assignment name: Project Mile Stone
+Team 7
+Group members: Adam, Albert, Hari, Hasitha
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,34 +11,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Final Project</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
 </head>
 <body>
-    <div class="upper-half">
-        <div id="spotify-streams-to-measures"></div>
-        <div id="youtube-views-to-likes"></div>
-    </div>
-    
-    <div class="lower-half">
+    <div class="container">
+        <div class="upper-half">
+            <div id="spotify-streams-to-metrics"></div>
+            <div class="artist-information-box">
+                <h2>Artist Information</h2>
+            
+                <div class="select-wrapper">
+                    <label for="artist-select">Choose an artist:</label>
+                    <select id="artist-select"></select>
 
-        <div id="artist-information-box">
-            <label for="artist-select">Choose an artist:</label>
-            <select id="artist-select">
-            </select>
+                    <div id="x-axis-controls">
+                        <label for="x-axis-select">X-axis:</label>
+                        <select id="x-axis-select">
+                            <option value="Danceability">Danceability</option>
+                            <option value="Energy" selected>Energy</option>
+                            <option value="Loudness">Loudness</option>
+                            <option value="Speechiness">Speechiness</option>
+                            <option value="Acousticness">Acousticness</option>
+                            <option value="Instrumentalness">Instrumentalness</option>
+                            <option value="Liveness">Liveness</option>
+                            <option value="Valence">Valence</option>
+                            <option value="Tempo">Tempo</option>
+                            <option value="Views">Views</option>
+                            <option value="Likes">Likes</option>
+                        </select>
+                
+                        
+                        <div id="y-axis-container">
+                            <label for="y-axis-select">Y-axis:</label>
+                            <select id="y-axis-select">
+                                <option value="Danceability">Danceability</option>
+                                <option value="Energy">Energy</option>
+                                <option value="Loudness">Loudness</option>
+                                <option value="Speechiness">Speechiness</option>
+                                <option value="Acousticness">Acousticness</option>
+                                <option value="Instrumentalness">Instrumentalness</option>
+                                <option value="Liveness">Liveness</option>
+                                <option value="Valence">Valence</option>
+                                <option value="Tempo">Tempo</option>
+                                <option value="Views">Views</option>
+                                <option value="Likes">Likes</option>
+                            </select>
+                        </div>                    
+                    </div>
+                </div>
+            
+                
+                <div class="audio-player">
+                    <div class="button-group">
+                        <button class="btn heart"><i class="fas fa-heart"></i></button>
+                        <button class="btn"><i class="fas fa-step-backward"></i></button>
+                        <button class="btn"><i class="fas fa-play"></i></button>
+                        <button class="btn"><i class="fas fa-step-forward"></i></button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-circle"></div> 
+                        </div>
+                    </div>
+                    <div class="time-stamp">2:38</div>
+                </div>
+            </div>
+            
         </div>
-        
-        <div id="spotify-streams-to-metrics"></div>
-        <div id="youtube-views-and-likes-to-metrics"></div>
+
+        <div class="lower-half">
+            <div id="youtube-views-to-likes"></div>
+            <div id="youtube-views-and-likes-to-metrics"></div>
+        </div>
     </div>
-    
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
     <script src="js/d3.v7.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/spotifyStreamsToMeasures.js"></script>
-    <script src="js/youtubeViewsToLikes.js"></script>
-    <script src="js/spotifyStreamsToMetrics.js"></script>
-    <script src="js/youtubeViewsAndLikesToMetrics.js"></script>
+    <script src="js/BarChart.js"></script>
+    <script src="js/SpotifyScatterPlot.js"></script>
+    <script src="js/YTScatterPlot.js"></script>
     <script src="js/artistInformationBox.js"></script>
 
 
 </body>
+
+<script>
+
+</script>
+
 </html>
